@@ -86,6 +86,7 @@ if (!defined('ABSPATH')) {
                                 }
                                 ?>
                             </select>
+                            <p class="description">Adjust the positioning of the embed chat widget and open chat button.</p>
                         </td>
                     </tr>
                     
@@ -115,6 +116,7 @@ if (!defined('ABSPATH')) {
                                 }
                                 ?>
                             </select>
+                            <p class="description">The chat bubble icon show when chat is closed.</p>
                         </td>
                     </tr>
                 </table>
@@ -200,10 +202,10 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_temperature" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_temperature')); ?>" 
                                    min="0" 
-                                   max="2" 
+                                   max="1" 
                                    step="0.1" 
                                    class="small-text">
-                            <p class="description">Controls randomness (0.0 - 2.0). Lower = more focused, Higher = more creative</p>
+                            <p class="description">Controls randomness (0.1 - 1.0). Lower = more focused, Higher = more creative</p>
                         </td>
                     </tr>
                     
@@ -230,8 +232,8 @@ if (!defined('ABSPATH')) {
                                       name="axai_aichat_default_messages" 
                                       rows="6" 
                                       class="large-text code"><?php echo esc_textarea(get_option('axai_aichat_default_messages')); ?></textarea>
-                            <p class="description">Pre-populate the chat with default messages in JSON format.<br>
-                            Example: <code>["Hello!", "How can I help you?", "What would you like to know?"]</code></p>
+                            <p class="description">Pre-populate the chat with default messages.<br>
+                            Example: <code>Hello!, How can I help you?, What would you like to know?</code></p>
                         </td>
                     </tr>
                 </table>
@@ -239,6 +241,79 @@ if (!defined('ABSPATH')) {
             
             <!-- Tab: Appearance -->
             <div id="tab-appearance" class="axai-tab-content">
+                <h2>Branding</h2>
+                <table class="form-table">
+                    <tr>
+                        <th scope="row">
+                            <label for="axai_aichat_brand_image_url">Brand Image URL</label>
+                        </th>
+                        <td>
+                            <input type="url" 
+                                   id="axai_aichat_brand_image_url" 
+                                   name="axai_aichat_brand_image_url" 
+                                   value="<?php echo esc_attr(get_option('axai_aichat_brand_image_url')); ?>" 
+                                   class="regular-text">
+                                <p class="description">URL to the Brand Icon/Image to display on window header.</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="axai_aichat_sponsor_link">Sponsor Link</label>
+                        </th>
+                        <td>
+                            <input type="url" 
+                                   id="axai_aichat_sponsor_link" 
+                                   name="axai_aichat_sponsor_link" 
+                                   value="<?php echo esc_attr(get_option('axai_aichat_sponsor_link')); ?>" 
+                                   class="regular-text">
+                                <p class="description">URL to the Sponsor</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">
+                            <label for="axai_aichat_sponsor_text">Sponsor Text</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="axai_aichat_sponsor_text" 
+                                   name="axai_aichat_sponsor_text" 
+                                   value="<?php echo esc_attr(get_option('axai_aichat_sponsor_text')); ?>" 
+                                   class="regular-text">
+                            <p class="description">Sponsor Name or Text</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <label for="axai_aichat_support_email">Suppport email</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="axai_aichat_support_email" 
+                                   name="axai_aichat_support_email" 
+                                   value="<?php echo esc_attr(get_option('axai_aichat_support_email')); ?>" 
+                                   class="regular-text">
+                            <p class="description">Shows a support email that the user can used to draft an email via the "three dot" menu in the top right. Option will not appear if it is not set.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">
+                            <label for="axai_aichat_assistant_name">Reset Chat Text</label>
+                        </th>
+                        <td>
+                            <input type="text" 
+                                   id="axai_aichat_reset_chat_text" 
+                                   name="axai_aichat_reset_chat_text" 
+                                   value="<?php echo esc_attr(get_option('axai_aichat_reset_chat_text')); ?>" 
+                                   class="regular-text">
+                            <p class="description">Override the text shown on the reset chat button.</p>
+                        </td>
+                    </tr>
+                </table>
+
                 <h2>Colors & Text</h2>
                 <table class="form-table">
                     <tr>
@@ -251,19 +326,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_button_color" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_button_color')); ?>" 
                                    class="axai-color-picker">
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <th scope="row">
-                            <label for="axai_aichat_text_color">Text Color</label>
-                        </th>
-                        <td>
-                            <input type="text" 
-                                   id="axai_aichat_text_color" 
-                                   name="axai_aichat_text_color" 
-                                   value="<?php echo esc_attr(get_option('axai_aichat_text_color')); ?>" 
-                                   class="axai-color-picker">
+                                <p class="description">Overwrite the chat bubble background color shown when chat is closed. Value must be hex color code.</p>
                         </td>
                     </tr>
                     
@@ -277,6 +340,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_user_bg_color" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_user_bg_color')); ?>" 
                                    class="axai-color-picker">
+                                <p class="description">Overwrite the background color of the user chat bubbles when chatting. Value must be hex color code.</p>
                         </td>
                     </tr>
                     
@@ -290,7 +354,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_assistant_bg_color" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_assistant_bg_color')); ?>" 
                                    class="axai-color-picker">
-                            <p class="description">Important for contrast with text in different themes!</p>
+                            <p class="description">Overwrite the background color of the assistant response chat bubbles when chatting. Value must be hex color code.</p>
                         </td>
                     </tr>
                 </table>
@@ -306,6 +370,7 @@ if (!defined('ABSPATH')) {
                                       name="axai_aichat_greeting" 
                                       rows="3" 
                                       class="large-text"><?php echo esc_textarea(get_option('axai_aichat_greeting')); ?></textarea>
+                            <p class="description">Default text message to be shown when chat is opened and no previous message history is found.</p>
                         </td>
                     </tr>
                     
@@ -333,6 +398,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_assistant_name" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_assistant_name')); ?>" 
                                    class="regular-text">
+                            <p class="description">Set the chat assistant name that appears above each chat message. Default AnythingLLM Chat Assistant.</p>
                         </td>
                     </tr>
                     
@@ -346,6 +412,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_assistant_icon" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_assistant_icon')); ?>" 
                                    class="regular-text">
+                            <p class="description">Set the icon of the chat assistant.</p>
                         </td>
                     </tr>
                 </table>
@@ -362,7 +429,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_window_height" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_window_height')); ?>" 
                                    class="small-text">
-                            <p class="description">e.g., 500px or 80vh</p>
+                            <p class="description">e.g., 500px, 95% or 80vh</p>
                         </td>
                     </tr>
                     
@@ -376,7 +443,7 @@ if (!defined('ABSPATH')) {
                                    name="axai_aichat_window_width" 
                                    value="<?php echo esc_attr(get_option('axai_aichat_window_width')); ?>" 
                                    class="small-text">
-                            <p class="description">e.g., 400px or 30vw</p>
+                            <p class="description">e.g., 400px, 40% or 30vw</p>
                         </td>
                     </tr>
                 </table>

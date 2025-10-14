@@ -1,6 +1,6 @@
 /**
  * AxAI Galaxy AnythingLLM Chat Widget - Admin JavaScript
- * Version: 2.1.3
+ * Version: 2.1.4
  * Author: Ali Kutlusoy
  * 
  * File Path: /axai-galaxy-aichat/assets/js/admin.js
@@ -11,7 +11,7 @@
 
     $(document).ready(function() {
         
-        console.log('AxAI Admin JS loaded v2.1.3');
+        console.log('AxAI Admin JS loaded v2.1.4');
         
         // ========================================
         // WordPress Color Picker

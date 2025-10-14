@@ -3,7 +3,7 @@
  * Plugin Name: AxAI Galaxy AnythingLLM Chat Widget
  * Plugin URI: https://axai.at
  * Description: Integrates AnythingLLM Chat Widget with advanced theme and customization options
- * Version: 2.1.3
+ * Version: 2.1.4
  * Author: Ali Kutlusoy
  * Author URI: https://axai.at
  * License: GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('AXAI_AICHAT_VERSION', '2.1.3');
+define('AXAI_AICHAT_VERSION', '2.1.4');
 define('AXAI_AICHAT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AXAI_AICHAT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -83,42 +83,55 @@ class AxAI_Galaxy_AIChat {
      * Register settings
      */
     public function register_settings() {
-        // Main settings
+        // Basic Configuration > Main settings
         register_setting('axai_aichat_settings', 'axai_aichat_embed_id');
         register_setting('axai_aichat_settings', 'axai_aichat_server_url');
         
-        // Basic parameters
+        // Basic Configuration > Position & Icon
         register_setting('axai_aichat_settings', 'axai_aichat_position');
         register_setting('axai_aichat_settings', 'axai_aichat_chat_icon');
-        register_setting('axai_aichat_settings', 'axai_aichat_button_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_window_height');
-        register_setting('axai_aichat_settings', 'axai_aichat_window_width');
-        
-        // Text parameters
-        register_setting('axai_aichat_settings', 'axai_aichat_greeting');
-        register_setting('axai_aichat_settings', 'axai_aichat_send_message_text');
-        register_setting('axai_aichat_settings', 'axai_aichat_assistant_name');
-        register_setting('axai_aichat_settings', 'axai_aichat_assistant_icon');
-        
-        // AI parameters
+
+        // Basic Configuration > Options
+        register_setting('axai_aichat_settings', 'axai_aichat_open_on_load');
+        register_setting('axai_aichat_settings', 'axai_aichat_show_thoughts');
+        register_setting('axai_aichat_settings', 'axai_aichat_no_sponsor');
+        register_setting('axai_aichat_settings', 'axai_aichat_no_header');
+
+        // AI Settings > AI Configuration
         register_setting('axai_aichat_settings', 'axai_aichat_prompt');
         register_setting('axai_aichat_settings', 'axai_aichat_model');
         register_setting('axai_aichat_settings', 'axai_aichat_temperature');
         register_setting('axai_aichat_settings', 'axai_aichat_language');
         register_setting('axai_aichat_settings', 'axai_aichat_default_messages');
-        
-        // Color parameters
-        register_setting('axai_aichat_settings', 'axai_aichat_text_color');
+
+        // Appearance > Branding
+        register_setting('axai_aichat_settings', 'axai_aichat_brand_image_url'); // Neu
+        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_link'); // Neu
+        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_text'); // Neu
+        register_setting('axai_aichat_settings', 'axai_aichat_support_email'); // Neu
+        register_setting('axai_aichat_settings', 'axai_aichat_reset_chat_text'); // Neu
+
+        // Appearance > Colors & Text
+        register_setting('axai_aichat_settings', 'axai_aichat_button_color');
         register_setting('axai_aichat_settings', 'axai_aichat_user_bg_color');
         register_setting('axai_aichat_settings', 'axai_aichat_assistant_bg_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_text_size'); // Neu
+
+        // Appearance > Colors & Text
+        register_setting('axai_aichat_settings', 'axai_aichat_greeting');
+        register_setting('axai_aichat_settings', 'axai_aichat_send_message_text');
+        register_setting('axai_aichat_settings', 'axai_aichat_assistant_name');
+        register_setting('axai_aichat_settings', 'axai_aichat_assistant_icon');
+        register_setting('axai_aichat_settings', 'axai_aichat_username'); // Neu
+
+        // Appearance > Window Dimensions
+        register_setting('axai_aichat_settings', 'axai_aichat_window_height');
+        register_setting('axai_aichat_settings', 'axai_aichat_window_width');
         
-        // Checkbox parameters
-        register_setting('axai_aichat_settings', 'axai_aichat_open_on_load');
-        register_setting('axai_aichat_settings', 'axai_aichat_show_thoughts');
-        register_setting('axai_aichat_settings', 'axai_aichat_no_sponsor');
-        register_setting('axai_aichat_settings', 'axai_aichat_no_header');
+        // Color parameters
+        register_setting('axai_aichat_settings', 'axai_aichat_text_color'); // Überflüssig???
         
-        // Theme settings
+        // Theme > Theme Selection
         register_setting('axai_aichat_settings', 'axai_aichat_theme');
         register_setting('axai_aichat_settings', 'axai_aichat_transparency');
         register_setting('axai_aichat_settings', 'axai_aichat_blur');
@@ -319,7 +332,7 @@ class AxAI_Galaxy_AIChat {
         $this->add_optional_attribute($attributes, 'send_message_text', 'data-send-message-text');
         $this->add_optional_attribute($attributes, 'assistant_name', 'data-assistant-name');
         $this->add_optional_attribute($attributes, 'assistant_icon', 'data-assistant-icon');
-        $this->add_optional_attribute($attributes, 'text_color', 'data-text-color');
+    
         
         // User background color with theme default
         $user_bg_color = get_option('axai_aichat_user_bg_color');
@@ -346,6 +359,13 @@ class AxAI_Galaxy_AIChat {
         $this->add_optional_attribute($attributes, 'language', 'data-language');
         $this->add_optional_attribute($attributes, 'default_messages', 'data-default-messages');
         
+        // Branding
+        $this->add_optional_attribute($attributes, 'brand_image_url', 'data-brand-image-url');
+        $this->add_optional_attribute($attributes, 'sponsor_link', 'data-sponsor-link');
+        $this->add_optional_attribute($attributes, 'sponsor_text', 'data-sponsor-text');
+        $this->add_optional_attribute($attributes, 'support_email', 'data-support-email');
+        $this->add_optional_attribute($attributes, 'reset_chat_text', 'data-reset-chat-text');
+
         // Checkbox parameters
         if (get_option('axai_aichat_open_on_load')) {
             $attributes['data-open-on-load'] = 'true';
