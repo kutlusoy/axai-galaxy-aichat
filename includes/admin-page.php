@@ -225,7 +225,7 @@ if (!defined('ABSPATH')) {
                     
                     <tr>
                         <th scope="row">
-                            <label for="axai_aichat_default_messages">Default Messages (JSON)</label>
+                            <label for="axai_aichat_default_messages">Default Messages</label>
                         </th>
                         <td>
                             <textarea id="axai_aichat_default_messages" 
