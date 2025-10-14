@@ -105,7 +105,7 @@
         if ($('#theme-preview').length) {
             var $preview = $('#theme-preview .theme-preview-box');
             
-            // Theme-Namen und Farben
+            // Theme names and colors
             var themeColors = {
                 'default': { bg: '#ffffff', text: '#222628', name: 'Default' },
                 'linux': { bg: '#000000', text: '#00ff00', name: 'Linux Terminal' },
@@ -174,18 +174,18 @@
             var serverUrl = $('#axai_aichat_server_url').val();
             
             if (!embedId || embedId.trim() === '') {
-                alert('Bitte geben Sie eine Workspace Embed-ID ein!');
+                alert('Please enter a Workspace Embed ID!');
                 e.preventDefault();
                 return false;
             }
             
             if (!serverUrl || serverUrl.trim() === '') {
-                alert('Bitte geben Sie eine AI Server URL ein!');
+                alert('Please enter an AI server URL!');
                 e.preventDefault();
                 return false;
             }
             
-            // Entferne Theme-Klasse von body beim Speichern
+            // Remove theme class from body when saving
             $('body').removeClass(function (index, className) {
                 return (className.match(/(^|\s)axai-theme-\S+/g) || []).join(' ');
             });
@@ -221,11 +221,11 @@
         // Helpful Tips
         // ========================================
         console.log('Tipps:');
-        console.log('- Alle Themen sollten jetzt funktionieren!');
-        console.log('- Transparenz: 0-100% (100% = vollständig sichtbar)');
-        console.log('- Blur: 0-20px (0 = kein Blur)');
-        console.log('- Custom Theme: Wählen Sie "Custom Theme" und passen Sie alle Farben an');
-        console.log('- Version 2.1.3: Verbesserte Theme-Unterstützung für alle Elemente');
+        console.log('- All themes should now work!');
+        console.log('- Transparency: 0-100% (100% = fully visible)');
+        console.log('- Blur: 0-20px (0 = no blur)');
+        console.log('- Custom Theme: Select "Custom Theme" and customize all colors');
+        console.log('- Version 2.1.4: Improved theme support for all elements');
         
     });
     

@@ -122,14 +122,14 @@ class AxAI_Galaxy_AIChat {
         register_setting('axai_aichat_settings', 'axai_aichat_send_message_text');
         register_setting('axai_aichat_settings', 'axai_aichat_assistant_name');
         register_setting('axai_aichat_settings', 'axai_aichat_assistant_icon');
-        register_setting('axai_aichat_settings', 'axai_aichat_username'); // Neu
+        register_setting('axai_aichat_settings', 'axai_aichat_username');
 
         // Appearance > Window Dimensions
         register_setting('axai_aichat_settings', 'axai_aichat_window_height');
         register_setting('axai_aichat_settings', 'axai_aichat_window_width');
         
         // Color parameters
-        register_setting('axai_aichat_settings', 'axai_aichat_text_color'); // Überflüssig???
+        register_setting('axai_aichat_settings', 'axai_aichat_text_color');
         
         // Theme > Theme Selection
         register_setting('axai_aichat_settings', 'axai_aichat_theme');
