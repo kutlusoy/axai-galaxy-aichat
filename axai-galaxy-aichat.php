@@ -368,10 +368,10 @@ class AxAI_Galaxy_AIChat {
 
         // Checkbox parameters
         if (get_option('axai_aichat_open_on_load')) {
-            $attributes['data-open-on-load'] = 'true';
+            $attributes['data-open-on-load'] = 'on';
         }
         if (get_option('axai_aichat_show_thoughts')) {
-            $attributes['data-show-thoughts'] = 'true';
+            $attributes['data-show-thoughts'] = 'on';
         }
         if (get_option('axai_aichat_no_sponsor')) {
             $attributes['data-no-sponsor'] = 'true';

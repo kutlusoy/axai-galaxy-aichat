@@ -101,8 +101,8 @@ if (!defined('ABSPATH')) {
                                     'plus' => 'Plus',
                                     'chatBubble' => 'Chat Bubble',
                                     'support' => 'Support',
-                                    'search2' => 'Search 2',
                                     'search' => 'Search',
+                                    'search2' => 'Search 2',
                                     'magic' => 'Magic'
                                 );
                                 $current_icon = get_option('axai_aichat_chat_icon', 'chatBubble');

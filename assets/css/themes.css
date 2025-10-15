@@ -44,7 +44,7 @@ body.axai-theme-linux {
     --axai-sponsor-color: #00ff00;
 }
 
-body.axai-theme-linux * {
+body.axai-theme-linux #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 3px rgba(0, 255, 0, 0.5) !important;
 }
