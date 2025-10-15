@@ -139,14 +139,33 @@ class AxAI_Galaxy_AIChat {
         // Custom theme colors
         register_setting('axai_aichat_settings', 'axai_aichat_custom_bg_color');
         register_setting('axai_aichat_settings', 'axai_aichat_custom_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_bg_color');
         register_setting('axai_aichat_settings', 'axai_aichat_custom_border_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_hover_bg_color');
         register_setting('axai_aichat_settings', 'axai_aichat_custom_user_msg_bg');
         register_setting('axai_aichat_settings', 'axai_aichat_custom_user_msg_text');
         register_setting('axai_aichat_settings', 'axai_aichat_custom_bot_msg_bg');
         register_setting('axai_aichat_settings', 'axai_aichat_custom_bot_msg_text');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_button_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_button_text_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_bg_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_text_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_border_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_placeholder_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_bg_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_text_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_border_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_button_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_button_hover_bg');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_button_hover_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_greeting_text_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_timestamp_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_bot_name_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_send_button_icon_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_send_button_icon_hover_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_footer_link_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_footer_button_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_box_shadow');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_button_hover_shadow');
+        register_setting('axai_aichat_settings', 'axai_aichat_custom_text_shadow');
     }
     
     /**
@@ -442,17 +461,36 @@ class AxAI_Galaxy_AIChat {
         
         // Custom theme colors (only if custom theme selected)
         if ($theme === 'custom') {
-            $custom_colors = array(
+           $custom_colors = array(
                 'bg_color' => '--axai-bg-color',
-                'text_color' => '--axai-text-color',
-                'header_text_color' => '--axai-header-text-color',
-                'input_bg_color' => '--axai-input-bg-color',
+                'text_color' => '--axai-text-Color',
                 'border_color' => '--axai-border-color',
-                'hover_bg_color' => '--axai-hover-bg-color',
                 'user_msg_bg' => '--axai-user-msg-bg',
                 'user_msg_text' => '--axai-user-msg-text',
                 'bot_msg_bg' => '--axai-bot-msg-bg',
-                'bot_msg_text' => '--axai-bot-msg-text'
+                'bot_msg_text' => '--axai-bot-msg-text',
+                'button_color' => '--axai-button-Color',
+                'button_text_color' => '--axai-button-text-Color',
+                'input_bg_color' => '--axai-input-bg-Color',
+                'input_text_color' => '--axai-input-text-Color',
+                'input_border_color' => '--axai-input-border-Color',
+                'input_placeholder_color' => '--axai-input-placeholder-Color',
+                'header_bg_color' => '--axai-header-bg-Color',
+                'header_text_color' => '--axai-header-text-Color',
+                'header_border_color' => '--axai-header-border-Color',
+                'header_button_color' => '--axai-header-button-Color',
+                'header_button_hover_bg' => '--axai-header-button-hover-bg',
+                'header_button_hover_color' => '--axai-header-button-hover-Color',
+                'greeting_text_color' => '--axai-greeting-text-Color',
+                'timestamp_color' => '--axai-timestamp-color',
+                'bot_name_color' => '--axai-bot-name-Color',
+                'send_button_icon_color' => '--axai-send-button-icon-Color',
+                'send_button_icon_hover_color' => '--axai-send-button-icon-hover-color',
+                'footer_link_color' => '--axai-footer-link-color',
+                'footer_button_color' => '--axai-footer-button-Color',
+                'box_shadow' => '--axai-box-shadow',
+                'button_hover_shadow' => '--axai-button-hover-shadow',
+                'text_shadow' => '--axai-text-shadow'
             );
             
             foreach ($custom_colors as $key => $var) {
