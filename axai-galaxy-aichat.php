@@ -421,6 +421,12 @@ class AxAI_Galaxy_AIChat {
             echo ' ' . $key . '="' . $value . '"';
         }
         echo ' src="' . esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js"></script>' . "\n";
+
+        // echo '<!-- AxAI Galaxy AnythingLLM Chat Widget v' . AXAI_AICHAT_VERSION . ' -->' . "\n";
+        // echo '<script type="text/javascript">' . "\n";
+        // echo '      let element = document.getElementById("anything-llm-embed-chat-button-container");' . "\n";
+        // echo '      element.classList.add("hero-button");' . "\n";
+        // echo '</script>' . "\n";
     }
     
     /**
