@@ -13,7 +13,6 @@ A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advance
 
 ### 🎨 Extensive Customization
 - **16+ Pre-built Themes**: Default, Linux, Dark, Ocean, Forest, Sunset, Royal, Midnight, Coffee, Neon, Minimalist, Rose, Cyberpunk, Nature, Professional, Retro, Candy
-- **Custom Theme Builder**: Create your own color schemes
 - **Position Control**: Choose from different screen positions
 - **Icon Selection**: Multiple chat icon options
 
@@ -90,7 +89,7 @@ This plugin is licensed under the GPL v2 or later.
 
 ## Version
 
-Current Version: 2.1.4
+Current Version: 2.2.1
 
 ## Requirements
 
@@ -101,12 +100,3 @@ Current Version: 2.1.4
 ## Contributing
 
 Contributions are welcome! Please feel free to submit pull requests or create issues for bugs and feature requests.
-
-## Changelog
-
-### 2.1.4
-- Enhanced theme system with 16+ pre-built themes
-- Added custom theme builder
-- Improved color customization options
-- Added transparency and blur effects
-- Extended AI configuration options

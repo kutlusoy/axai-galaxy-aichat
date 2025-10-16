@@ -1,6 +1,6 @@
 /**
  * AxAI Galaxy AnythingLLM Chat Widget - Frontend JavaScript
- * Version: 2.2.0
+ * Version: 2.2.1
  * Author: Ali Kutlusoy
  * 
  * File Path: /axai-galaxy-aichat/assets/js/frontend.js
@@ -11,7 +11,7 @@
 
     $(document).ready(function() {
         
-        console.log('AxAI Frontend JS loaded v2.2.0');
+        console.log('AxAI Frontend JS loaded v2.2.1');
         
         // Wait for AnythingLLM widget to load
         var attempts = 0;
