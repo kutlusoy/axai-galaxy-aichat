@@ -1,6 +1,6 @@
 /**
  * AxAI Galaxy AnythingLLM Chat Widget - Frontend JavaScript
- * Version: 2.1.4
+ * Version: 2.2.0
  * Author: Ali Kutlusoy
  * 
  * File Path: /axai-galaxy-aichat/assets/js/frontend.js
@@ -11,18 +11,11 @@
 
     $(document).ready(function() {
         
-        console.log('AxAI Frontend JS loaded v2.1.4');
-        
-        var chatWrapper = $('.axai-aichat-wrapper');
-        
-        if (!chatWrapper.length) {
-            console.log('No chat wrapper found');
-            return;
-        }
+        console.log('AxAI Frontend JS loaded v2.2.0');
         
         // Wait for AnythingLLM widget to load
         var attempts = 0;
-        var maxAttempts = 100; // 10 seconds
+        var maxAttempts = 100; // 10 seconds (100 * 100ms)
         
         var checkWidget = setInterval(function() {
             attempts++;
@@ -31,27 +24,30 @@
             var chatContainer = $('#anythingllm-chat-widget-container');
             
             if (chatContainer.length) {
-                console.log('AnythingLLM Widget found!');
+                console.log('AnythingLLM Widget detected!');
                 clearInterval(checkWidget);
-                initializeChatWidget(chatWrapper, chatContainer);
+                initializeChatWidget(chatContainer);
             } else if (attempts >= maxAttempts) {
                 console.log('AnythingLLM Widget not found after ' + maxAttempts + ' attempts');
                 clearInterval(checkWidget);
             }
         }, 100);
         
-        function initializeChatWidget(wrapper, container) {
-            console.log('Initializing chat widget');
-            console.log('Theme:', wrapper.attr('data-theme'));
+        /**
+         * Initialize chat widget after it's loaded
+         */
+        function initializeChatWidget(container) {
+            console.log('Initializing AxAI chat widget enhancements');
             
-            // Apply theme class to container
-            var theme = wrapper.attr('data-theme');
-            if (theme && theme !== 'default') {
-                container.addClass('axai-theme-' + theme);
-                console.log('Applied theme class: axai-theme-' + theme);
-            }
+            // Add custom class for additional styling if needed
+            container.addClass('axai-enhanced');
             
-            console.log('Chat widget initialization complete');
+            // Optional: Add custom event listeners
+            container.on('click', function(e) {
+                // Custom click handler if needed
+            });
+            
+            console.log('AxAI chat widget initialization complete');
         }
         
     });

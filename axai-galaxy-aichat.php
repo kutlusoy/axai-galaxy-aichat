@@ -3,7 +3,7 @@
  * Plugin Name: AxAI Galaxy AnythingLLM Chat Widget
  * Plugin URI: https://axai.at
  * Description: Integrates AnythingLLM Chat Widget with advanced theme and customization options
- * Version: 2.1.4
+ * Version: 2.2.1
  * Author: Ali Kutlusoy
  * Author URI: https://axai.at
  * License: GPL v2 or later
@@ -18,15 +18,20 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('AXAI_AICHAT_VERSION', '2.1.4');
+define('AXAI_AICHAT_VERSION', '2.2.1');
 define('AXAI_AICHAT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AXAI_AICHAT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-// Plugin class
+/**
+ * Main Plugin Class
+ */
 class AxAI_Galaxy_AIChat {
     
     private static $instance = null;
     
+    /**
+     * Get singleton instance
+     */
     public static function get_instance() {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -34,6 +39,9 @@ class AxAI_Galaxy_AIChat {
         return self::$instance;
     }
     
+    /**
+     * Constructor
+     */
     private function __construct() {
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
@@ -64,6 +72,7 @@ class AxAI_Galaxy_AIChat {
         
         wp_enqueue_style('wp-color-picker');
         wp_enqueue_script('wp-color-picker');
+        
         wp_enqueue_script(
             'axai-aichat-admin',
             AXAI_AICHAT_PLUGIN_URL . 'assets/js/admin.js',
@@ -71,6 +80,7 @@ class AxAI_Galaxy_AIChat {
             AXAI_AICHAT_VERSION,
             true
         );
+        
         wp_enqueue_style(
             'axai-aichat-admin',
             AXAI_AICHAT_PLUGIN_URL . 'assets/css/admin.css',
@@ -83,89 +93,49 @@ class AxAI_Galaxy_AIChat {
      * Register settings
      */
     public function register_settings() {
-        // Basic Configuration > Main settings
+        // Basic Configuration
         register_setting('axai_aichat_settings', 'axai_aichat_embed_id');
         register_setting('axai_aichat_settings', 'axai_aichat_server_url');
-        
-        // Basic Configuration > Position & Icon
         register_setting('axai_aichat_settings', 'axai_aichat_position');
         register_setting('axai_aichat_settings', 'axai_aichat_chat_icon');
-
-        // Basic Configuration > Options
         register_setting('axai_aichat_settings', 'axai_aichat_open_on_load');
         register_setting('axai_aichat_settings', 'axai_aichat_show_thoughts');
         register_setting('axai_aichat_settings', 'axai_aichat_no_sponsor');
         register_setting('axai_aichat_settings', 'axai_aichat_no_header');
 
-        // AI Settings > AI Configuration
+        // AI Settings
         register_setting('axai_aichat_settings', 'axai_aichat_prompt');
         register_setting('axai_aichat_settings', 'axai_aichat_model');
         register_setting('axai_aichat_settings', 'axai_aichat_temperature');
         register_setting('axai_aichat_settings', 'axai_aichat_language');
         register_setting('axai_aichat_settings', 'axai_aichat_default_messages');
 
-        // Appearance > Branding
-        register_setting('axai_aichat_settings', 'axai_aichat_brand_image_url'); // Neu
-        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_link'); // Neu
-        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_text'); // Neu
-        register_setting('axai_aichat_settings', 'axai_aichat_support_email'); // Neu
-        register_setting('axai_aichat_settings', 'axai_aichat_reset_chat_text'); // Neu
+        // Appearance - Branding
+        register_setting('axai_aichat_settings', 'axai_aichat_brand_image_url');
+        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_link');
+        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_text');
+        register_setting('axai_aichat_settings', 'axai_aichat_support_email');
+        register_setting('axai_aichat_settings', 'axai_aichat_reset_chat_text');
 
-        // Appearance > Colors & Text
+        // Appearance - Colors
         register_setting('axai_aichat_settings', 'axai_aichat_button_color');
         register_setting('axai_aichat_settings', 'axai_aichat_user_bg_color');
         register_setting('axai_aichat_settings', 'axai_aichat_assistant_bg_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_text_size'); // Neu
 
-        // Appearance > Colors & Text
+        // Appearance - Text
         register_setting('axai_aichat_settings', 'axai_aichat_greeting');
         register_setting('axai_aichat_settings', 'axai_aichat_send_message_text');
         register_setting('axai_aichat_settings', 'axai_aichat_assistant_name');
         register_setting('axai_aichat_settings', 'axai_aichat_assistant_icon');
-        register_setting('axai_aichat_settings', 'axai_aichat_username');
 
-        // Appearance > Window Dimensions
+        // Appearance - Dimensions
         register_setting('axai_aichat_settings', 'axai_aichat_window_height');
         register_setting('axai_aichat_settings', 'axai_aichat_window_width');
         
-        // Color parameters
-        register_setting('axai_aichat_settings', 'axai_aichat_text_color');
-        
-        // Theme > Theme Selection
+        // Theme
         register_setting('axai_aichat_settings', 'axai_aichat_theme');
         register_setting('axai_aichat_settings', 'axai_aichat_transparency');
         register_setting('axai_aichat_settings', 'axai_aichat_blur');
-        
-        // Custom theme colors
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_bg_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_border_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_user_msg_bg');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_user_msg_text');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_bot_msg_bg');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_bot_msg_text');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_button_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_button_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_bg_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_border_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_input_placeholder_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_bg_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_border_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_button_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_button_hover_bg');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_header_button_hover_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_greeting_text_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_timestamp_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_bot_name_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_send_button_icon_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_send_button_icon_hover_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_footer_link_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_footer_button_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_box_shadow');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_button_hover_shadow');
-        register_setting('axai_aichat_settings', 'axai_aichat_custom_text_shadow');
     }
     
     /**
@@ -175,122 +145,105 @@ class AxAI_Galaxy_AIChat {
         $defaults = array(
             'default' => array(
                 'user_bg_color' => '#3b82f6',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#f3f4f6',
-                'assistant_text_color' => '#222628',
-                'button_color' => '#3b82f6'
+                'button_color' => '#3b82f6',
+                'sponsor_color' => '#3b82f6'
             ),
             'linux' => array(
                 'user_bg_color' => '#003300',
-                'user_text_color' => '#00ff00',
                 'assistant_bg_color' => '#001100',
-                'assistant_text_color' => '#00ff00',
-                'button_color' => '#00ff00'
+                'button_color' => '#00ff00',
+                'sponsor_color' => '#00ff00'
             ),
             'dark' => array(
                 'user_bg_color' => '#60a5fa',
-                'user_text_color' => '#1f2937',
                 'assistant_bg_color' => '#374151',
-                'assistant_text_color' => '#f9fafb',
-                'button_color' => '#60a5fa'
+                'button_color' => '#60a5fa',
+                'sponsor_color' => '#60a5fa'
             ),
             'ocean' => array(
                 'user_bg_color' => '#0ea5e9',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#e0f2fe',
-                'assistant_text_color' => '#0c4a6e',
-                'button_color' => '#0ea5e9'
+                'button_color' => '#0ea5e9',
+                'sponsor_color' => '#0ea5e9'
             ),
             'forest' => array(
                 'user_bg_color' => '#16a34a',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#dcfce7',
-                'assistant_text_color' => '#14532d',
-                'button_color' => '#16a34a'
+                'button_color' => '#16a34a',
+                'sponsor_color' => '#16a34a'
             ),
             'sunset' => array(
                 'user_bg_color' => '#ea580c',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#ffedd5',
-                'assistant_text_color' => '#7c2d12',
-                'button_color' => '#ea580c'
+                'button_color' => '#ea580c',
+                'sponsor_color' => '#ea580c'
             ),
             'royal' => array(
                 'user_bg_color' => '#7c3aed',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#f3e8ff',
-                'assistant_text_color' => '#4c1d95',
-                'button_color' => '#7c3aed'
+                'button_color' => '#7c3aed',
+                'sponsor_color' => '#7c3aed'
             ),
             'midnight' => array(
                 'user_bg_color' => '#6366f1',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#1e293b',
-                'assistant_text_color' => '#f1f5f9',
-                'button_color' => '#6366f1'
+                'button_color' => '#6366f1',
+                'sponsor_color' => '#6366f1'
             ),
             'coffee' => array(
                 'user_bg_color' => '#92400e',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#fde68a',
-                'assistant_text_color' => '#451a03',
-                'button_color' => '#d97706'
+                'button_color' => '#d97706',
+                'sponsor_color' => '#d97706'
             ),
             'neon' => array(
                 'user_bg_color' => '#00ffff',
-                'user_text_color' => '#000000',
                 'assistant_bg_color' => '#1a1a1a',
-                'assistant_text_color' => '#00ffff',
-                'button_color' => '#00ffff'
+                'button_color' => '#00ffff',
+                'sponsor_color' => '#00ffff'
             ),
             'minimalist' => array(
                 'user_bg_color' => '#1e293b',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#f8fafc',
-                'assistant_text_color' => '#1e293b',
-                'button_color' => '#1e293b'
+                'button_color' => '#1e293b',
+                'sponsor_color' => '#1e293b'
             ),
             'rose' => array(
                 'user_bg_color' => '#e11d48',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#ffe4e6',
-                'assistant_text_color' => '#881337',
-                'button_color' => '#e11d48'
+                'button_color' => '#e11d48',
+                'sponsor_color' => '#e11d48'
             ),
             'cyberpunk' => array(
                 'user_bg_color' => '#ff00ff',
-                'user_text_color' => '#000000',
                 'assistant_bg_color' => '#1a0033',
-                'assistant_text_color' => '#00ffff',
-                'button_color' => '#ff00ff'
+                'button_color' => '#ff00ff',
+                'sponsor_color' => '#ff00ff'
             ),
             'nature' => array(
                 'user_bg_color' => '#166534',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#dcfce7',
-                'assistant_text_color' => '#1a2e05',
-                'button_color' => '#84cc16'
+                'button_color' => '#84cc16',
+                'sponsor_color' => '#84cc16'
             ),
             'professional' => array(
                 'user_bg_color' => '#1e40af',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#f8fafc',
-                'assistant_text_color' => '#1e293b',
-                'button_color' => '#1e40af'
+                'button_color' => '#1e40af',
+                'sponsor_color' => '#1e40af'
             ),
             'retro' => array(
                 'user_bg_color' => '#d97706',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#fde68a',
-                'assistant_text_color' => '#78350f',
-                'button_color' => '#f59e0b'
+                'button_color' => '#f59e0b',
+                'sponsor_color' => '#f59e0b'
             ),
             'candy' => array(
                 'user_bg_color' => '#db2777',
-                'user_text_color' => '#ffffff',
                 'assistant_bg_color' => '#fce7f3',
-                'assistant_text_color' => '#831843',
-                'button_color' => '#db2777'
+                'button_color' => '#db2777',
+                'sponsor_color' => '#db2777'
             )
         );
         
@@ -351,7 +304,6 @@ class AxAI_Galaxy_AIChat {
         $this->add_optional_attribute($attributes, 'send_message_text', 'data-send-message-text');
         $this->add_optional_attribute($attributes, 'assistant_name', 'data-assistant-name');
         $this->add_optional_attribute($attributes, 'assistant_icon', 'data-assistant-icon');
-    
         
         // User background color with theme default
         $user_bg_color = get_option('axai_aichat_user_bg_color');
@@ -410,7 +362,7 @@ class AxAI_Galaxy_AIChat {
         }
         
         // Generate and output custom CSS
-        $custom_css = $this->generate_custom_css($theme, $transparency, $blur, $theme_defaults);
+        $custom_css = $this->generate_custom_css($theme, $transparency, $blur);
         if (!empty($custom_css)) {
             echo '<style id="axai-aichat-custom-inline">' . $custom_css . '</style>' . "\n";
         }
@@ -421,12 +373,6 @@ class AxAI_Galaxy_AIChat {
             echo ' ' . $key . '="' . $value . '"';
         }
         echo ' src="' . esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js"></script>' . "\n";
-
-        // echo '<!-- AxAI Galaxy AnythingLLM Chat Widget v' . AXAI_AICHAT_VERSION . ' -->' . "\n";
-        // echo '<script type="text/javascript">' . "\n";
-        // echo '      let element = document.getElementById("anything-llm-embed-chat-button-container");' . "\n";
-        // echo '      element.classList.add("hero-button");' . "\n";
-        // echo '</script>' . "\n";
     }
     
     /**
@@ -440,9 +386,86 @@ class AxAI_Galaxy_AIChat {
     }
     
     /**
+     * Adjust brightness of a color
+     * 
+     * @param string $hex Hex color code
+     * @param int $percent Percentage to adjust (-100 to 100)
+     * @return string Adjusted hex color
+     */
+    private function adjust_brightness($hex, $percent) {
+        // Remove # if present
+        $hex = str_replace('#', '', $hex);
+        
+        // Convert to RGB
+        if (strlen($hex) == 3) {
+            $r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
+            $g = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
+            $b = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+        } else {
+            $r = hexdec(substr($hex, 0, 2));
+            $g = hexdec(substr($hex, 2, 2));
+            $b = hexdec(substr($hex, 4, 2));
+        }
+        
+        // Adjust each component
+        $r = max(0, min(255, $r + ($r * $percent / 100)));
+        $g = max(0, min(255, $g + ($g * $percent / 100)));
+        $b = max(0, min(255, $b + ($b * $percent / 100)));
+        
+        // Convert back to hex
+        return '#' . str_pad(dechex(round($r)), 2, '0', STR_PAD_LEFT) . 
+                     str_pad(dechex(round($g)), 2, '0', STR_PAD_LEFT) . 
+                     str_pad(dechex(round($b)), 2, '0', STR_PAD_LEFT);
+    }
+    
+    /**
+     * Calculate luminance of a color
+     * 
+     * @param string $hex Hex color code
+     * @return float Luminance value (0-1)
+     */
+    private function get_luminance($hex) {
+        $hex = str_replace('#', '', $hex);
+        
+        if (strlen($hex) == 3) {
+            $r = hexdec(substr($hex, 0, 1) . substr($hex, 0, 1));
+            $g = hexdec(substr($hex, 1, 1) . substr($hex, 1, 1));
+            $b = hexdec(substr($hex, 2, 1) . substr($hex, 2, 1));
+        } else {
+            $r = hexdec(substr($hex, 0, 2));
+            $g = hexdec(substr($hex, 2, 2));
+            $b = hexdec(substr($hex, 4, 2));
+        }
+        
+        // Normalize and calculate luminance
+        $r = $r / 255;
+        $g = $g / 255;
+        $b = $b / 255;
+        
+        return 0.299 * $r + 0.587 * $g + 0.114 * $b;
+    }
+    
+    /**
+     * Get hover color based on luminance
+     * 
+     * @param string $hex Base color
+     * @return string Hover color
+     */
+    private function get_hover_color($hex) {
+        $luminance = $this->get_luminance($hex);
+        
+        // If dark color, lighten it; if light color, darken it
+        if ($luminance < 0.5) {
+            return $this->adjust_brightness($hex, 20); // Lighten by 20%
+        } else {
+            return $this->adjust_brightness($hex, -15); // Darken by 15%
+        }
+    }
+    
+    /**
      * Generate custom CSS
      */
-    private function generate_custom_css($theme, $transparency, $blur, $theme_defaults) {
+    private function generate_custom_css($theme, $transparency, $blur) {
         $css = '';
         
         // Determine selector based on theme
@@ -452,77 +475,85 @@ class AxAI_Galaxy_AIChat {
             $selector = ':root';
         }
         
-        $css .= $selector . ' {' . "\n";
+        // Get custom colors from admin
+        $button_color = get_option('axai_aichat_button_color');
+        $user_bg_color = get_option('axai_aichat_user_bg_color');
+        $assistant_bg_color = get_option('axai_aichat_assistant_bg_color');
         
-        // Transparency
-        if ($transparency < 100) {
-            $opacity = $transparency / 100;
-            $css .= "    --axai-transparency: {$opacity};\n";
-        }
+        // Get theme defaults
+        $theme_defaults = $this->get_theme_defaults($theme);
         
-        // Blur
-        if ($blur > 0) {
-            $css .= "    --axai-blur: {$blur}px;\n";
-        }
+        // Check if custom colors override theme colors
+        $has_custom_colors = false;
         
-        // Custom theme colors (only if custom theme selected)
-        if ($theme === 'custom') {
-           $custom_colors = array(
-                'bg_color' => '--axai-bg-color',
-                'text_color' => '--axai-text-Color',
-                'border_color' => '--axai-border-color',
-                'user_msg_bg' => '--axai-user-msg-bg',
-                'user_msg_text' => '--axai-user-msg-text',
-                'bot_msg_bg' => '--axai-bot-msg-bg',
-                'bot_msg_text' => '--axai-bot-msg-text',
-                'button_color' => '--axai-button-Color',
-                'button_text_color' => '--axai-button-text-Color',
-                'input_bg_color' => '--axai-input-bg-Color',
-                'input_text_color' => '--axai-input-text-Color',
-                'input_border_color' => '--axai-input-border-Color',
-                'input_placeholder_color' => '--axai-input-placeholder-Color',
-                'header_bg_color' => '--axai-header-bg-Color',
-                'header_text_color' => '--axai-header-text-Color',
-                'header_border_color' => '--axai-header-border-Color',
-                'header_button_color' => '--axai-header-button-Color',
-                'header_button_hover_bg' => '--axai-header-button-hover-bg',
-                'header_button_hover_color' => '--axai-header-button-hover-Color',
-                'greeting_text_color' => '--axai-greeting-text-Color',
-                'timestamp_color' => '--axai-timestamp-color',
-                'bot_name_color' => '--axai-bot-name-Color',
-                'send_button_icon_color' => '--axai-send-button-icon-Color',
-                'send_button_icon_hover_color' => '--axai-send-button-icon-hover-color',
-                'footer_link_color' => '--axai-footer-link-color',
-                'footer_button_color' => '--axai-footer-button-Color',
-                'box_shadow' => '--axai-box-shadow',
-                'button_hover_shadow' => '--axai-button-hover-shadow',
-                'text_shadow' => '--axai-text-shadow'
-            );
+        if (!empty($button_color) || !empty($user_bg_color) || !empty($assistant_bg_color) || 
+            $transparency < 100 || $blur > 0) {
             
-            foreach ($custom_colors as $key => $var) {
-                $value = get_option('axai_aichat_custom_' . $key);
-                if (!empty($value)) {
-                    $css .= "    {$var}: {$value};\n";
-                }
+            $css .= $selector . ' {' . "\n";
+            
+            // Button Color Override
+            if (!empty($button_color)) {
+                $has_custom_colors = true;
+                $hover_color = $this->get_hover_color($button_color);
+                $css .= "    --axai-button-color: {$button_color} !important;\n";
+                $css .= "    --axai-button-hover-color: {$hover_color} !important;\n";
+                $css .= "    --axai-button-hover-shadow: 0px 4px 14px {$button_color}80 !important;\n";
             }
+            
+            // User Message Background Override
+            if (!empty($user_bg_color)) {
+                $has_custom_colors = true;
+                $css .= "    --axai-user-msg-bg: {$user_bg_color} !important;\n";
+            }
+            
+            // Assistant Message Background Override
+            if (!empty($assistant_bg_color)) {
+                $has_custom_colors = true;
+                $css .= "    --axai-bot-msg-bg: {$assistant_bg_color} !important;\n";
+            }
+            
+            // Transparency
+            if ($transparency < 100) {
+                $opacity = $transparency / 100;
+                $css .= "    --axai-transparency: {$opacity} !important;\n";
+            }
+            
+            // Blur
+            if ($blur > 0) {
+                $css .= "    --axai-blur: {$blur}px !important;\n";
+            }
+            
+            $css .= "}\n\n";
         }
         
-        $css .= "}\n";
+        // Add glow effects for special themes
+        if (in_array($theme, array('linux', 'neon', 'cyberpunk')) && !empty($button_color)) {
+            $css .= $selector . ' #anything-llm-chat {' . "\n";
+            $css .= "    box-shadow: 0px 0px 25px {$button_color} !important;\n";
+            $css .= "}\n\n";
+            
+            $css .= $selector . ' button:hover {' . "\n";
+            $css .= "    box-shadow: 0px 0px 25px {$button_color} !important;\n";
+            $css .= "}\n";
+        }
         
         return $css;
     }
 }
 
-// Initialize plugin
+/**
+ * Initialize plugin
+ */
 function axai_galaxy_aichat_init() {
     return AxAI_Galaxy_AIChat::get_instance();
 }
 add_action('plugins_loaded', 'axai_galaxy_aichat_init');
 
-// Activation hook
+/**
+ * Activation hook
+ */
 register_activation_hook(__FILE__, 'axai_aichat_activate');
 function axai_aichat_activate() {
-    // Set default values
     add_option('axai_aichat_server_url', 'https://ai.axai.at:3002');
     add_option('axai_aichat_position', 'bottom-right');
     add_option('axai_aichat_chat_icon', 'chatBubble');
@@ -531,7 +562,9 @@ function axai_aichat_activate() {
     add_option('axai_aichat_blur', '0');
 }
 
-// Deactivation hook
+/**
+ * Deactivation hook
+ */
 register_deactivation_hook(__FILE__, 'axai_aichat_deactivate');
 function axai_aichat_deactivate() {
     // Optional: Cleanup

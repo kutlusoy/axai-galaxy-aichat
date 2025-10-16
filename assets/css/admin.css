@@ -1,6 +1,6 @@
 /**
  * AxAI Galaxy AnythingLLM Chat Widget - Admin Styles
- * Version: 2.1.4
+ * Version: 2.2.0
  * Author: Ali Kutlusoy
  * 
  * File Path: /axai-galaxy-aichat/assets/css/admin.css
@@ -11,10 +11,14 @@
    ======================================== */
 .axai-aichat-admin {
     max-width: 1200px;
+    margin: 20px 0;
 }
 
 .axai-aichat-admin h1 {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* ========================================
@@ -31,17 +35,26 @@
     border-bottom: 1px solid #ccd0d4;
     padding: 0;
     margin: 0;
+    background: #f9f9f9;
 }
 
 .nav-tab {
     padding: 12px 20px;
     font-size: 14px;
     font-weight: 600;
+    border-bottom: none;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-tab:hover {
+    background: #fff;
 }
 
 .nav-tab-active {
-    background: #f0f0f1;
-    border-bottom-color: #f0f0f1;
+    background: #fff;
+    border-bottom-color: #fff;
+    color: #2271b1;
 }
 
 /* ========================================
@@ -50,6 +63,7 @@
 .axai-tab-content {
     display: none;
     padding: 30px;
+    background: #fff;
 }
 
 .axai-tab-content.active {
@@ -60,8 +74,9 @@
     margin-top: 0;
     margin-bottom: 20px;
     font-size: 18px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #2271b1;
     padding-bottom: 10px;
+    color: #1d2327;
 }
 
 .axai-tab-content h3 {
@@ -78,6 +93,7 @@
     width: 250px;
     padding: 20px 10px 20px 0;
     vertical-align: top;
+    font-weight: 600;
 }
 
 .form-table td {
@@ -86,6 +102,7 @@
 
 .form-table input[type="text"],
 .form-table input[type="url"],
+.form-table input[type="email"],
 .form-table input[type="number"],
 .form-table textarea,
 .form-table select {
@@ -96,6 +113,7 @@
 .form-table textarea {
     min-height: 100px;
     font-family: monospace;
+    font-size: 13px;
 }
 
 .form-table .small-text {
@@ -107,6 +125,14 @@
     color: #666;
     font-size: 13px;
     font-style: italic;
+    transition: color 0.2s ease;
+}
+
+.form-table code {
+    padding: 2px 6px;
+    background: #f0f0f1;
+    border-radius: 3px;
+    font-size: 12px;
 }
 
 /* ========================================
@@ -120,6 +146,10 @@
     margin-top: 5px;
 }
 
+.wp-picker-container .wp-color-result {
+    border-radius: 4px;
+}
+
 /* ========================================
    Slider
    ======================================== */
@@ -127,6 +157,7 @@
     width: 300px;
     margin-right: 15px;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .slider-value {
@@ -135,6 +166,7 @@
     font-weight: 600;
     color: #2271b1;
     vertical-align: middle;
+    font-size: 14px;
 }
 
 /* ========================================
@@ -144,75 +176,7 @@
     max-width: 300px;
     font-size: 14px;
     padding: 8px;
-}
-
-#theme-preview {
-    margin-top: 20px;
-    padding: 20px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-.theme-preview-box {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-}
-
-.theme-preview-box::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    opacity: 0.9;
-    z-index: 0;
-}
-
-.theme-preview-box::after {
-    content: attr(data-theme-name);
-    position: relative;
-    z-index: 1;
-}
-
-/* Special Effects for Special Themes */
-body.axai-theme-linux .theme-preview-box {
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: 0 0 5px currentColor;
-}
-
-body.axai-theme-neon .theme-preview-box,
-body.axai-theme-cyberpunk .theme-preview-box {
-    text-shadow: 0 0 10px currentColor;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-}
-
-/* ========================================
-   Custom Theme Colors Section
-   ======================================== */
-#custom-theme-colors {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f9f9f9;
-    border: 2px dashed #ddd;
-    border-radius: 8px;
-}
-
-#custom-theme-colors h3 {
-    margin-top: 0;
-    color: #2271b1;
+    border-radius: 4px;
 }
 
 /* ========================================
@@ -221,6 +185,7 @@ body.axai-theme-cyberpunk .theme-preview-box {
 fieldset label {
     display: block;
     margin-bottom: 10px;
+    font-weight: normal;
 }
 
 fieldset label input[type="checkbox"] {
@@ -236,6 +201,7 @@ fieldset label input[type="checkbox"] {
     background: #282c34;
     border-radius: 8px;
     overflow-x: auto;
+    position: relative;
 }
 
 .code-preview pre {
@@ -249,6 +215,8 @@ fieldset label input[type="checkbox"] {
 
 .code-preview code {
     color: #61afef;
+    background: none;
+    padding: 0;
 }
 
 /* ========================================
@@ -256,6 +224,51 @@ fieldset label input[type="checkbox"] {
    ======================================== */
 .submit {
     margin-top: 0 !important;
+}
+
+.submit input[type="submit"] {
+    font-size: 14px;
+    padding: 8px 20px;
+    height: auto;
+}
+
+/* ========================================
+   Info Boxes
+   ======================================== */
+.axai-info-box {
+    background: #e7f7ff;
+    border-left: 4px solid #2271b1;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.axai-info-box p {
+    margin: 0;
+    color: #1d2327;
+}
+
+.axai-warning-box {
+    background: #fff8e5;
+    border-left: 4px solid #f0b429;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.axai-warning-box p {
+    margin: 0;
+    color: #1d2327;
+}
+
+/* ========================================
+   Version Info
+   ======================================== */
+.axai-version {
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+    margin-left: auto;
 }
 
 /* ========================================
@@ -277,41 +290,67 @@ fieldset label input[type="checkbox"] {
         width: 100%;
         max-width: 300px;
     }
+    
+    .nav-tab {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .axai-tab-content {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .axai-aichat-admin h1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .axai-version {
+        margin-left: 0;
+        margin-top: 5px;
+    }
 }
 
 /* ========================================
-   Info Boxes
+   Accessibility
    ======================================== */
-.axai-info-box {
-    background: #e7f7ff;
-    border-left: 4px solid #2271b1;
-    padding: 15px;
-    margin: 20px 0;
+.axai-tab-content:focus {
+    outline: none;
 }
 
-.axai-info-box p {
-    margin: 0;
-    color: #1d2327;
+.nav-tab:focus {
+    box-shadow: 0 0 0 2px #2271b1;
+    outline: none;
 }
 
-.axai-warning-box {
-    background: #fff8e5;
-    border-left: 4px solid #f0b429;
-    padding: 15px;
-    margin: 20px 0;
-}
-
-.axai-warning-box p {
-    margin: 0;
-    color: #1d2327;
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
 }
 
 /* ========================================
-   Version Info
+   Loading State
    ======================================== */
-.axai-version {
-    float: right;
-    font-size: 12px;
-    color: #999;
-    margin-top: 5px;
+input[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+@media print {
+    .nav-tab-wrapper,
+    .submit,
+    .axai-version {
+        display: none;
+    }
+    
+    .axai-tab-content {
+        display: block !important;
+    }
 }
