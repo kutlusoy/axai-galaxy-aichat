@@ -10,6 +10,12 @@
     opacity: 1 !important; /* Default transparency */
  }
 
+ :root .allm-bg-white .allm-text-white * {
+    color: unset !important;
+    background: unset !important;
+    background-color: unset !important
+ }
+
 /* ========================================
    THEME 1: DEFAULT
    ======================================== */
@@ -534,17 +540,17 @@ body.axai-theme-dark div#anything-llm-header {
     opacity: 1;
 }
 
-body.axai-theme-dark  button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+body.axai-theme-dark button.allm-border-none.allm-text-white[style] {
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
-body.axai-theme-dark  button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+body.axai-theme-dark button.allm-border-none.allm-text-white[style]:hover {
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -733,16 +739,16 @@ body.axai-theme-ocean div#anything-llm-header {
 }
 
 body.axai-theme-ocean button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-ocean button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -930,16 +936,16 @@ body.axai-theme-forest div#anything-llm-header {
 }
 
 body.axai-theme-forest button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-forest button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -1134,10 +1140,17 @@ body.axai-theme-sunset button.allm-border-none.allm-text-white[style] {
     opacity: 1 !important;
 }
 
+body.axai-theme-sunset button.allm-border-none.allm-text-white[style] {
+    background-color: var(--axai-button-color) !important;
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
+    opacity: 1 !important;
+}
+
 body.axai-theme-sunset button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -1325,16 +1338,16 @@ body.axai-theme-royal div#anything-llm-header {
 }
 
 body.axai-theme-royal button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-royal button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -1522,16 +1535,16 @@ body.axai-theme-midnight div#anything-llm-header {
 }
 
 body.axai-theme-midnight button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-midnight button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -1719,16 +1732,16 @@ body.axai-theme-coffee div#anything-llm-header {
 }
 
 body.axai-theme-coffee button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-coffee button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -1915,14 +1928,14 @@ body.axai-theme-neon div#anything-llm-header {
     opacity: 1;
 }
 
-body.axai-theme-neon  button.allm-border-none.allm-text-white[style] {
+body.axai-theme-neon button.allm-border-none.allm-text-white[style] {
     background: var(--axai-bg-color) !important;
     color: var(--axai-text-color) !important;
     box-shadow: var(--axai-box-shadow) !important;
     opacity: 1 !important;
 }
 
-body.axai-theme-neon  button.allm-border-none.allm-text-white[style]:hover {
+body.axai-theme-neon button.allm-border-none.allm-text-white[style]:hover {
     background: var(--axai-text-color) !important;
     color: var(--axai-bg-color) !important;
     box-shadow: var(--axai-box-shadow) !important;
@@ -2111,16 +2124,16 @@ body.axai-theme-minimalist div#anything-llm-header {
 }
 
 body.axai-theme-minimalist button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-minimalist button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -2306,16 +2319,16 @@ body.axai-theme-rose div#anything-llm-header {
 }
 
 body.axai-theme-rose button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-rose button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -2696,16 +2709,16 @@ body.axai-theme-nature div#anything-llm-header {
 }
 
 body.axai-theme-nature button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-nature button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -2891,16 +2904,16 @@ body.axai-theme-professional div#anything-llm-header {
 }
 
 body.axai-theme-professional button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-professional button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -3086,16 +3099,16 @@ body.axai-theme-retro div#anything-llm-header {
 }
 
 body.axai-theme-retro button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-retro button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
@@ -3281,16 +3294,16 @@ body.axai-theme-candy div#anything-llm-header {
 }
 
 body.axai-theme-candy button.allm-border-none.allm-text-white[style] {
-    background: var(--axai-bg-color) !important;
+    background-color: var(--axai-button-color) !important;
     color: var(--axai-text-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
 body.axai-theme-candy button.allm-border-none.allm-text-white[style]:hover {
-    background: var(--axai-text-color) !important;
-    color: var(--axai-bg-color) !important;
-    box-shadow: var(--axai-box-shadow) !important;
+    background-color: var(--axai-footer-button-color) !important; /* background: var(--axai-text-color) !important; */
+    color: var(--axai-text-color) !important;
+    border: var(--axai-button-color) 1px solid !important;
     opacity: 1 !important;
 }
 
