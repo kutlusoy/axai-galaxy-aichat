@@ -156,6 +156,7 @@ body[class*="axai-theme-"] button.allm-border-none.allm-text-white[style] {
     background-color: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
     border: 1px solid var(--axai-button-color) !important;
+    box-shadow: var(--axai-box-shadow) !important;
 }
 
 body[class*="axai-theme-"] button.allm-border-none.allm-text-white[style]:hover {
@@ -243,8 +244,7 @@ body.axai-theme-cyberpunk #anythingllm-chat-widget-container > button:hover {
 body[class*="axai-theme-"] #send-message-button {
     background-color: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
-    padding: 12px !important;
-    border-radius: 16px !important;
+    padding: 4px !important;
     transition: all 0.3s ease !important;
 }
 
@@ -277,7 +277,7 @@ body[class*="axai-theme-"] .allm-bg-white.allm-absolute a {
     background: var(--axai-bg-color) !important;
     color: var(--axai-text-color) !important;
     transition: all 0.3s ease !important;
-    padding: 12px 16px !important;
+    padding: 4px 6px !important;
 }
 
 body[class*="axai-theme-"] .allm-bg-white.allm-absolute button svg,
