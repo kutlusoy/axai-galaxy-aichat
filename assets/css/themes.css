@@ -26,7 +26,7 @@
    ======================================== */
 
 /* Main Chat Container */
-body[class*="axai-theme-"] #anything-llm-chat {
+html body[class*="axai-theme-"] #anything-llm-chat {
     background: var(--axai-bg-color) !important;
     color: var(--axai-text-color) !important;
     box-shadow: var(--axai-box-shadow) !important;
@@ -36,157 +36,157 @@ body[class*="axai-theme-"] #anything-llm-chat {
 }
 
 /* Header */
-body[class*="axai-theme-"] #anything-llm-header {
+html body[class*="axai-theme-"] #anything-llm-header {
     background: var(--axai-header-bg-color) !important;
     color: var(--axai-header-text-color) !important;
     border-bottom: 1px solid var(--axai-header-border-color) !important;
 }
 
 /* Header Buttons */
-body[class*="axai-theme-"] #anything-llm-header button.allm-bg-transparent {
+html body[class*="axai-theme-"] #anything-llm-header button.allm-bg-transparent {
     color: var(--axai-header-button-color) !important;
 }
 
-body[class*="axai-theme-"] #anything-llm-header button.allm-bg-transparent:hover {
+html body[class*="axai-theme-"] #anything-llm-header button.allm-bg-transparent:hover {
     background: var(--axai-header-button-hover-bg) !important;
     color: var(--axai-header-button-hover-color) !important;
 }
 
 /* Greeting Text */
-body[class*="axai-theme-"] .allm-text-slate-400 {
+html body[class*="axai-theme-"] .allm-text-slate-400 {
     color: var(--axai-greeting-text-color) !important;
 }
 
 /* Timestamps */
-body[class*="axai-theme-"] .allm-text-gray-400 {
+html body[class*="axai-theme-"] .allm-text-gray-400 {
     color: var(--axai-timestamp-color) !important;
 }
 
 /* Bot Name */
-body[class*="axai-theme-"] .allm-anything-llm-assistant-message .allm-text-gray-400 {
+html body[class*="axai-theme-"] .allm-anything-llm-assistant-message .allm-text-gray-400 {
     color: var(--axai-bot-name-color) !important;
 }
 
 /* User Messages */
-body[class*="axai-theme-"] .allm-anything-llm-user-message {
+html body[class*="axai-theme-"] .allm-anything-llm-user-message {
     background-color: var(--axai-user-msg-bg) !important;
     color: var(--axai-user-msg-text) !important;
 }
 
 /* Bot Messages */
-body[class*="axai-theme-"] .allm-anything-llm-assistant-message {
+html body[class*="axai-theme-"] .allm-anything-llm-assistant-message {
     background-color: var(--axai-bot-msg-bg) !important;
     color: var(--axai-bot-msg-text) !important;
 }
 
 /* Suggestion Buttons */
-body[class*="axai-theme-"] .msg-suggestion {
+html body[class*="axai-theme-"] .msg-suggestion {
     background-color: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
     border: 1px solid var(--axai-border-color) !important;
     transition: all 0.3s ease !important;
 }
 
-body[class*="axai-theme-"] .msg-suggestion:hover {
+html body[class*="axai-theme-"] .msg-suggestion:hover {
     box-shadow: var(--axai-button-hover-shadow) !important;
     transform: translateY(-2px) !important;
 }
 
 /* Input Container */
-body[class*="axai-theme-"] .allm-flex.allm-items-center.allm-w-full.allm-rounded-2xl {
+html body[class*="axai-theme-"] .allm-flex.allm-items-center.allm-w-full.allm-rounded-2xl {
     background: var(--axai-input-bg-color) !important;
     border: 1px solid var(--axai-input-border-color) !important;
     padding: 2px !important;
 }
 
 /* Input Field */
-body[class*="axai-theme-"] #message-input {
+html body[class*="axai-theme-"] #message-input {
     background: transparent !important;
     color: var(--axai-input-text-color) !important;
     border: none !important;
     outline: none !important;
 }
 
-body[class*="axai-theme-"] #message-input::placeholder {
+html body[class*="axai-theme-"] #message-input::placeholder {
     color: var(--axai-input-placeholder-color) !important;
 }
 
 /* Send Button */
-body[class*="axai-theme-"] #send-message-button {
+html body[class*="axai-theme-"] #send-message-button {
     color: var(--axai-send-button-icon-color) !important;
     transition: all 0.2s ease !important;
 }
 
-body[class*="axai-theme-"] #send-message-button:hover {
+html body[class*="axai-theme-"] #send-message-button:hover {
     color: var(--axai-send-button-icon-hover-color) !important;
 }
 
 /* Footer Links */
-body[class*="axai-theme-"] a[href*="mintplexlabs"],
-body[class*="axai-theme-"] a[href*="anythingllm"],
-body[class*="axai-theme-"] a.allm-text-xs {
+html body[class*="axai-theme-"] a[href*="mintplexlabs"],
+html body[class*="axai-theme-"] a[href*="anythingllm"],
+html body[class*="axai-theme-"] a.allm-text-xs {
     color: var(--axai-footer-link-color) !important;
     text-decoration: none !important;
 }
 
-body[class*="axai-theme-"] a[href*="mintplexlabs"]:hover,
-body[class*="axai-theme-"] a[href*="anythingllm"]:hover,
-body[class*="axai-theme-"] a.allm-text-xs:hover {
+html body[class*="axai-theme-"] a[href*="mintplexlabs"]:hover,
+html body[class*="axai-theme-"] a[href*="anythingllm"]:hover,
+html body[class*="axai-theme-"] a.allm-text-xs:hover {
     text-decoration: underline !important;
 }
 
 /* Background Override */
-body[class*="axai-theme-"] .allm-bg-white {
+html body[class*="axai-theme-"] .allm-bg-white {
     background: var(--axai-bg-color) !important;
 }
 
 /* Footer Container Background */
-body[class*="axai-theme-"] .allm-h-full.allm-w-full.allm-flex.allm-flex-col div.allm-flex-shrink-0.allm-mt-auto {
+html body[class*="axai-theme-"] .allm-h-full.allm-w-full.allm-flex.allm-flex-col div.allm-flex-shrink-0.allm-mt-auto {
     background: var(--axai-bg-color) !important;
 }
 
 /* Footer Buttons */
-body[class*="axai-theme-"] button.allm-border-none.allm-text-white {
+html body[class*="axai-theme-"] button.allm-border-none.allm-text-white {
     background: var(--axai-footer-button-color) !important;
     color: var(--axai-text-color) !important;
     transition: all 0.3s ease !important;
 }
 
-body[class*="axai-theme-"] button.allm-border-none.allm-text-white[style] {
+html body[class*="axai-theme-"] button.allm-border-none.allm-text-white[style] {
     background-color: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
     border: 1px solid var(--axai-button-color) !important;
     box-shadow: var(--axai-box-shadow) !important;
 }
 
-body[class*="axai-theme-"] button.allm-border-none.allm-text-white[style]:hover {
+html body[class*="axai-theme-"] button.allm-border-none.allm-text-white[style]:hover {
     background-color: var(--axai-button-hover-bg) !important;
     color: var(--axai-button-hover-color) !important;
     transform: translateY(-1px) !important;
 }
 
 /* Scrollbar */
-body[class*="axai-theme-"] ::-webkit-scrollbar {
+html body[class*="axai-theme-"] ::-webkit-scrollbar {
     width: 8px;
 }
 
-body[class*="axai-theme-"] ::-webkit-scrollbar-track {
+html body[class*="axai-theme-"] ::-webkit-scrollbar-track {
     background: var(--axai-input-bg-color);
     border-radius: 4px;
 }
 
-body[class*="axai-theme-"] ::-webkit-scrollbar-thumb {
+html body[class*="axai-theme-"] ::-webkit-scrollbar-thumb {
     background: var(--axai-border-color);
     border-radius: 4px;
 }
 
-body[class*="axai-theme-"] ::-webkit-scrollbar-thumb:hover {
+html body[class*="axai-theme-"] ::-webkit-scrollbar-thumb:hover {
     background: var(--axai-button-color);
 }
 
 /* Accessibility */
-body[class*="axai-theme-"] button:focus-visible,
-body[class*="axai-theme-"] textarea:focus-visible {
+html body[class*="axai-theme-"] button:focus-visible,
+html body[class*="axai-theme-"] textarea:focus-visible {
     outline: 2px solid var(--axai-button-color) !important;
     outline-offset: 2px;
 }
@@ -197,40 +197,40 @@ body[class*="axai-theme-"] textarea:focus-visible {
    ======================================== */
 
 /* Linux Terminal - Button Glow */
-body.axai-theme-linux #anythingllm-chat-widget-container button[aria-label*="chat"],
-body.axai-theme-linux #anythingllm-chat-widget-container > button {
+html body.axai-theme-linux #anythingllm-chat-widget-container button[aria-label*="chat"],
+html body.axai-theme-linux #anythingllm-chat-widget-container > button {
     box-shadow: 0px 0px 25px rgba(0, 255, 0, 0.7) !important;
     transition: all 0.3s ease !important;
 }
 
-body.axai-theme-linux #anythingllm-chat-widget-container button[aria-label*="chat"]:hover,
-body.axai-theme-linux #anythingllm-chat-widget-container > button:hover {
+html body.axai-theme-linux #anythingllm-chat-widget-container button[aria-label*="chat"]:hover,
+html body.axai-theme-linux #anythingllm-chat-widget-container > button:hover {
     box-shadow: 0px 0px 35px rgba(0, 255, 0, 0.9) !important;
     transform: scale(1.05) !important;
 }
 
 /* Neon - Button Glow */
-body.axai-theme-neon #anythingllm-chat-widget-container button[aria-label*="chat"],
-body.axai-theme-neon #anythingllm-chat-widget-container > button {
+html body.axai-theme-neon #anythingllm-chat-widget-container button[aria-label*="chat"],
+html body.axai-theme-neon #anythingllm-chat-widget-container > button {
     box-shadow: 0px 0px 25px rgba(255, 0, 255, 0.7) !important;
     transition: all 0.3s ease !important;
 }
 
-body.axai-theme-neon #anythingllm-chat-widget-container button[aria-label*="chat"]:hover,
-body.axai-theme-neon #anythingllm-chat-widget-container > button:hover {
+html body.axai-theme-neon #anythingllm-chat-widget-container button[aria-label*="chat"]:hover,
+html body.axai-theme-neon #anythingllm-chat-widget-container > button:hover {
     box-shadow: 0px 0px 35px rgba(255, 0, 255, 0.9), 0px 0px 20px rgba(0, 255, 255, 0.5) !important;
     transform: scale(1.05) !important;
 }
 
 /* Cyberpunk - Button Glow */
-body.axai-theme-cyberpunk #anythingllm-chat-widget-container button[aria-label*="chat"],
-body.axai-theme-cyberpunk #anythingllm-chat-widget-container > button {
+html body.axai-theme-cyberpunk #anythingllm-chat-widget-container button[aria-label*="chat"],
+html body.axai-theme-cyberpunk #anythingllm-chat-widget-container > button {
     box-shadow: 0px 0px 25px rgba(131, 56, 236, 0.7) !important;
     transition: all 0.3s ease !important;
 }
 
-body.axai-theme-cyberpunk #anythingllm-chat-widget-container button[aria-label*="chat"]:hover,
-body.axai-theme-cyberpunk #anythingllm-chat-widget-container > button:hover {
+html body.axai-theme-cyberpunk #anythingllm-chat-widget-container button[aria-label*="chat"]:hover,
+html body.axai-theme-cyberpunk #anythingllm-chat-widget-container > button:hover {
     box-shadow: 0px 0px 35px rgba(255, 0, 110, 0.9), 0px 0px 20px rgba(131, 56, 236, 0.6) !important;
     transform: scale(1.05) !important;
 }
@@ -241,21 +241,21 @@ body.axai-theme-cyberpunk #anythingllm-chat-widget-container > button:hover {
    ======================================== */
 
 /* Send Button - Universal Styling */
-body[class*="axai-theme-"] #send-message-button {
+html body[class*="axai-theme-"] #send-message-button {
     background-color: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
     padding: 4px !important;
     transition: all 0.3s ease !important;
 }
 
-body[class*="axai-theme-"] #send-message-button:hover {
+html body[class*="axai-theme-"] #send-message-button:hover {
     background-color: var(--axai-button-hover-bg) !important;
     color: var(--axai-button-hover-color) !important;
     transform: translateY(-2px) !important;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
-body[class*="axai-theme-"] #send-message-button svg {
+html body[class*="axai-theme-"] #send-message-button svg {
     color: currentColor !important;
 }
 
@@ -265,63 +265,63 @@ body[class*="axai-theme-"] #send-message-button svg {
    ======================================== */
 
 /* Menu Container */
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute.allm-z-10.allm-flex.allm-flex-col {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute.allm-z-10.allm-flex.allm-flex-col {
     background: var(--axai-bg-color) !important;
     border: 1px solid var(--axai-border-color) !important;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Menu Items - Default State */
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute button,
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute a {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute button,
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute a {
     background: var(--axai-bg-color) !important;
     color: var(--axai-text-color) !important;
     transition: all 0.3s ease !important;
     padding: 4px 6px !important;
 }
 
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute button svg,
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute a svg {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute button svg,
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute a svg {
     color: var(--axai-button-color) !important;
     transition: all 0.3s ease !important;
 }
 
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute button p,
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute a p {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute button p,
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute a p {
     color: var(--axai-text-color) !important;
 }
 
 /* Menu Items - Hover State */
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute button:hover,
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute a:hover {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute button:hover,
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute a:hover {
     background: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
     box-shadow: 0px 0px 15px var(--axai-button-color) !important;
 }
 
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute button:hover svg,
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute a:hover svg {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute button:hover svg,
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute a:hover svg {
     color: var(--axai-button-text-color) !important;
 }
 
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute button:hover p,
-body[class*="axai-theme-"] .allm-bg-white.allm-absolute a:hover p {
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute button:hover p,
+html body[class*="axai-theme-"] .allm-bg-white.allm-absolute a:hover p {
     color: var(--axai-button-text-color) !important;
 }
 
 /* Menu Items - Special Glow for Linux, Neon, Cyberpunk */
-body.axai-theme-linux .allm-bg-white.allm-absolute button:hover,
-body.axai-theme-linux .allm-bg-white.allm-absolute a:hover {
+html body.axai-theme-linux .allm-bg-white.allm-absolute button:hover,
+html body.axai-theme-linux .allm-bg-white.allm-absolute a:hover {
     box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.8) !important;
 }
 
-body.axai-theme-neon .allm-bg-white.allm-absolute button:hover,
-body.axai-theme-neon .allm-bg-white.allm-absolute a:hover {
+html body.axai-theme-neon .allm-bg-white.allm-absolute button:hover,
+html body.axai-theme-neon .allm-bg-white.allm-absolute a:hover {
     box-shadow: 0px 0px 20px rgba(255, 0, 255, 0.8), 0px 0px 10px rgba(0, 255, 255, 0.4) !important;
 }
 
-body.axai-theme-cyberpunk .allm-bg-white.allm-absolute button:hover,
-body.axai-theme-cyberpunk .allm-bg-white.allm-absolute a:hover {
+html body.axai-theme-cyberpunk .allm-bg-white.allm-absolute button:hover,
+html body.axai-theme-cyberpunk .allm-bg-white.allm-absolute a:hover {
     box-shadow: 0px 0px 20px rgba(255, 0, 110, 0.8), 0px 0px 10px rgba(131, 56, 236, 0.5) !important;
 }
 
@@ -330,30 +330,30 @@ body.axai-theme-cyberpunk .allm-bg-white.allm-absolute a:hover {
    ======================================== */
 
 /* Footer Links and Buttons */
-body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto a,
-body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto button {
+html body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto a,
+html body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto button {
     transition: all 0.3s ease !important;
 }
 
-body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto a:hover,
-body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto button:hover {
+html body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto a:hover,
+html body[class*="axai-theme-"] .allm-flex-shrink-0.allm-mt-auto button:hover {
     color: var(--axai-button-color) !important;
     text-shadow: 0px 0px 8px var(--axai-button-color) !important;
 }
 
 /* Footer Links - Glow on Hover for Special Themes */
-body.axai-theme-linux .allm-flex-shrink-0.allm-mt-auto a:hover,
-body.axai-theme-linux .allm-flex-shrink-0.allm-mt-auto button:hover {
+html body.axai-theme-linux .allm-flex-shrink-0.allm-mt-auto a:hover,
+html body.axai-theme-linux .allm-flex-shrink-0.allm-mt-auto button:hover {
     text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8) !important;
 }
 
-body.axai-theme-neon .allm-flex-shrink-0.allm-mt-auto a:hover,
-body.axai-theme-neon .allm-flex-shrink-0.allm-mt-auto button:hover {
+html body.axai-theme-neon .allm-flex-shrink-0.allm-mt-auto a:hover,
+html body.axai-theme-neon .allm-flex-shrink-0.allm-mt-auto button:hover {
     text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8) !important;
 }
 
-body.axai-theme-cyberpunk .allm-flex-shrink-0.allm-mt-auto a:hover,
-body.axai-theme-cyberpunk .allm-flex-shrink-0.allm-mt-auto button:hover {
+html body.axai-theme-cyberpunk .allm-flex-shrink-0.allm-mt-auto a:hover,
+html body.axai-theme-cyberpunk .allm-flex-shrink-0.allm-mt-auto button:hover {
     text-shadow: 0px 0px 10px rgba(255, 0, 110, 0.8) !important;
 }
 
@@ -362,7 +362,7 @@ body.axai-theme-cyberpunk .allm-flex-shrink-0.allm-mt-auto button:hover {
    ======================================== */
 
 /* THEME 1: DEFAULT */
-body.axai-theme-default {
+html body.axai-theme-default {
     --axai-bg-color: #ffffff;
     --axai-text-color: #222628;
     --axai-border-color: #d1d5db;
@@ -396,7 +396,7 @@ body.axai-theme-default {
 }
 
 /* THEME 2: LINUX TERMINAL */
-body.axai-theme-linux {
+html body.axai-theme-linux {
     --axai-bg-color: #000000;
     --axai-text-color: #00ff00;
     --axai-border-color: rgba(0, 255, 0, 0.5);
@@ -430,19 +430,19 @@ body.axai-theme-linux {
 }
 
 /* Linux Terminal: Monospace Font & Text Shadow */
-body.axai-theme-linux #anything-llm-chat,
-body.axai-theme-linux #anything-llm-chat * {
+html body.axai-theme-linux #anything-llm-chat,
+html body.axai-theme-linux #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 3px rgba(0, 255, 0, 0.5) !important;
 }
 
 /* Linux Terminal: Glow Effect on Chat Window */
-body.axai-theme-linux #anything-llm-chat {
+html body.axai-theme-linux #anything-llm-chat {
     box-shadow: 0px 0px 30px rgba(0, 255, 0, 0.6), inset 0 0 20px rgba(0, 255, 0, 0.1) !important;
 }
 
 /* THEME 3: DARK MODE */
-body.axai-theme-dark {
+html body.axai-theme-dark {
     --axai-bg-color: #1e1e1e;
     --axai-text-color: #e0e0e0;
     --axai-border-color: #333333;
@@ -476,7 +476,7 @@ body.axai-theme-dark {
 }
 
 /* THEME 4: OCEAN */
-body.axai-theme-ocean {
+html body.axai-theme-ocean {
     --axai-bg-color: #e0f2fe;
     --axai-text-color: #0c4a6e;
     --axai-border-color: #7dd3fc;
@@ -510,7 +510,7 @@ body.axai-theme-ocean {
 }
 
 /* THEME 5: FOREST */
-body.axai-theme-forest {
+html body.axai-theme-forest {
     --axai-bg-color: #ecfdf5;
     --axai-text-color: #064e3b;
     --axai-border-color: #6ee7b7;
@@ -544,7 +544,7 @@ body.axai-theme-forest {
 }
 
 /* THEME 6: SUNSET */
-body.axai-theme-sunset {
+html body.axai-theme-sunset {
     --axai-bg-color: #fff7ed;
     --axai-text-color: #7c2d12;
     --axai-border-color: #fed7aa;
@@ -578,7 +578,7 @@ body.axai-theme-sunset {
 }
 
 /* THEME 7: ROYAL */
-body.axai-theme-royal {
+html body.axai-theme-royal {
     --axai-bg-color: #faf5ff;
     --axai-text-color: #581c87;
     --axai-border-color: #d8b4fe;
@@ -612,7 +612,7 @@ body.axai-theme-royal {
 }
 
 /* THEME 8: MIDNIGHT */
-body.axai-theme-midnight {
+html body.axai-theme-midnight {
     --axai-bg-color: #0f172a;
     --axai-text-color: #cbd5e1;
     --axai-border-color: #334155;
@@ -646,7 +646,7 @@ body.axai-theme-midnight {
 }
 
 /* THEME 9: COFFEE */
-body.axai-theme-coffee {
+html body.axai-theme-coffee {
     --axai-bg-color: #fef3c7;
     --axai-text-color: #78350f;
     --axai-border-color: #fde68a;
@@ -680,7 +680,7 @@ body.axai-theme-coffee {
 }
 
 /* THEME 10: NEON */
-body.axai-theme-neon {
+html body.axai-theme-neon {
     --axai-bg-color: #0a0a0a;
     --axai-text-color: #00ffff;
     --axai-border-color: rgba(0, 255, 255, 0.5);
@@ -714,19 +714,19 @@ body.axai-theme-neon {
 }
 
 /* Neon: Monospace Font & Text Shadow */
-body.axai-theme-neon #anything-llm-chat,
-body.axai-theme-neon #anything-llm-chat * {
+html body.axai-theme-neon #anything-llm-chat,
+html body.axai-theme-neon #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.7) !important;
 }
 
 /* Neon: Glow Effect on Chat Window */
-body.axai-theme-neon #anything-llm-chat {
+html body.axai-theme-neon #anything-llm-chat {
     box-shadow: 0px 0px 40px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(255, 0, 255, 0.2) !important;
 }
 
 /* THEME 11: MINIMALIST */
-body.axai-theme-minimalist {
+html body.axai-theme-minimalist {
     --axai-bg-color: #fafafa;
     --axai-text-color: #171717;
     --axai-border-color: #e5e5e5;
@@ -760,7 +760,7 @@ body.axai-theme-minimalist {
 }
 
 /* THEME 12: ROSE */
-body.axai-theme-rose {
+html body.axai-theme-rose {
     --axai-bg-color: #fff1f2;
     --axai-text-color: #881337;
     --axai-border-color: #fda4af;
@@ -794,7 +794,7 @@ body.axai-theme-rose {
 }
 
 /* THEME 13: CYBERPUNK */
-body.axai-theme-cyberpunk {
+html body.axai-theme-cyberpunk {
     --axai-bg-color: #0d0221;
     --axai-text-color: #ff006e;
     --axai-border-color: rgba(255, 0, 110, 0.5);
@@ -828,19 +828,19 @@ body.axai-theme-cyberpunk {
 }
 
 /* Cyberpunk: Monospace Font & Text Shadow */
-body.axai-theme-cyberpunk #anything-llm-chat,
-body.axai-theme-cyberpunk #anything-llm-chat * {
+html body.axai-theme-cyberpunk #anything-llm-chat,
+html body.axai-theme-cyberpunk #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 5px rgba(255, 0, 110, 0.5) !important;
 }
 
 /* Cyberpunk: Glow Effect on Chat Window */
-body.axai-theme-cyberpunk #anything-llm-chat {
+html body.axai-theme-cyberpunk #anything-llm-chat {
     box-shadow: 0px 0px 40px rgba(131, 56, 236, 0.8), inset 0 0 30px rgba(255, 0, 110, 0.2) !important;
 }
 
 /* THEME 14: NATURE */
-body.axai-theme-nature {
+html body.axai-theme-nature {
     --axai-bg-color: #f0fdf4;
     --axai-text-color: #14532d;
     --axai-border-color: #86efac;
@@ -874,7 +874,7 @@ body.axai-theme-nature {
 }
 
 /* THEME 15: PROFESSIONAL */
-body.axai-theme-professional {
+html body.axai-theme-professional {
     --axai-bg-color: #f8fafc;
     --axai-text-color: #1e293b;
     --axai-border-color: #cbd5e1;
@@ -908,7 +908,7 @@ body.axai-theme-professional {
 }
 
 /* THEME 16: RETRO */
-body.axai-theme-retro {
+html body.axai-theme-retro {
     --axai-bg-color: #fffbeb;
     --axai-text-color: #713f12;
     --axai-border-color: #fcd34d;
@@ -942,7 +942,7 @@ body.axai-theme-retro {
 }
 
 /* THEME 17: CANDY */
-body.axai-theme-candy {
+html body.axai-theme-candy {
     --axai-bg-color: #fdf4ff;
     --axai-text-color: #831843;
     --axai-border-color: #f9a8d4;
@@ -979,7 +979,7 @@ body.axai-theme-candy {
    RESPONSIVE & MEDIA QUERIES
    ======================================== */
 @media (max-width: 768px) {
-    body[class*="axai-theme-"] .allm-fixed.allm-inset-0 {
+    html body[class*="axai-theme-"] .allm-fixed.allm-inset-0 {
         max-width: calc(100vw - 40px) !important;
         max-height: calc(100vh - 100px) !important;
     }
@@ -987,7 +987,7 @@ body.axai-theme-candy {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-    body[class*="axai-theme-"] * {
+    html body[class*="axai-theme-"] * {
         animation: none !important;
         transition: none !important;
     }
@@ -995,7 +995,7 @@ body.axai-theme-candy {
 
 /* Print */
 @media print {
-    body[class*="axai-theme-"] #anythingllm-chat-widget-container {
+    html body[class*="axai-theme-"] #anythingllm-chat-widget-container {
         display: none !important;
     }
 }
