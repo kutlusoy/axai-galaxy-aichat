@@ -85,6 +85,7 @@ html body[class*="axai-theme-"] .msg-suggestion {
     color: var(--axai-button-text-color) !important;
     border: 1px solid var(--axai-border-color) !important;
     transition: all 0.3s ease !important;
+    opacity: 1 !important;
 }
 
 html body[class*="axai-theme-"] .msg-suggestion:hover {
