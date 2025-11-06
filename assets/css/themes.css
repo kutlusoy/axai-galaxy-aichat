@@ -434,16 +434,19 @@ html body.axai-theme-linux {
 html body.axai-theme-linux #anything-llm-chat,
 html body.axai-theme-linux #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    text-shadow: none !important; /* Deaktiviert während Animation */
 }
 
-/* Text Shadow nur für sichtbare Text-Elemente, nicht für Container */
+/* Text Shadow NUR für fertige Nachrichten aktivieren */
 html body.axai-theme-linux #anything-llm-chat .allm-anything-llm-user-message p,
-html body.axai-theme-linux #anything-llm-chat .allm-anything-llm-assistant-message p,
+html body.axai-theme-linux #anything-llm-chat .allm-anything-llm-assistant-message > div > p,
+html body.axai-theme-linux #anything-llm-chat .allm-anything-llm-assistant-message > p {
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.5) !important;
+}
+
+/* Text Shadow für UI-Elemente */
 html body.axai-theme-linux #anything-llm-chat button,
-html body.axai-theme-linux #anything-llm-chat a,
-html body.axai-theme-linux #anything-llm-chat h1,
-html body.axai-theme-linux #anything-llm-chat h2,
-html body.axai-theme-linux #anything-llm-chat h3 {
+html body.axai-theme-linux #anything-llm-chat a {
     text-shadow: 0 0 3px rgba(0, 255, 0, 0.5) !important;
 }
 
@@ -728,16 +731,19 @@ html body.axai-theme-neon {
 html body.axai-theme-neon #anything-llm-chat,
 html body.axai-theme-neon #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    text-shadow: none !important; /* Deaktiviert während Animation */
 }
 
-/* Text Shadow nur für sichtbare Text-Elemente, nicht für Container */
+/* Text Shadow NUR für fertige Nachrichten aktivieren */
 html body.axai-theme-neon #anything-llm-chat .allm-anything-llm-user-message p,
-html body.axai-theme-neon #anything-llm-chat .allm-anything-llm-assistant-message p,
+html body.axai-theme-neon #anything-llm-chat .allm-anything-llm-assistant-message > div > p,
+html body.axai-theme-neon #anything-llm-chat .allm-anything-llm-assistant-message > p {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7) !important;
+}
+
+/* Text Shadow für UI-Elemente */
 html body.axai-theme-neon #anything-llm-chat button,
-html body.axai-theme-neon #anything-llm-chat a,
-html body.axai-theme-neon #anything-llm-chat h1,
-html body.axai-theme-neon #anything-llm-chat h2,
-html body.axai-theme-neon #anything-llm-chat h3 {
+html body.axai-theme-neon #anything-llm-chat a {
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.7) !important;
 }
 
@@ -852,16 +858,19 @@ html body.axai-theme-cyberpunk {
 html body.axai-theme-cyberpunk #anything-llm-chat,
 html body.axai-theme-cyberpunk #anything-llm-chat * {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    text-shadow: none !important; /* Deaktiviert während Animation */
 }
 
-/* Text Shadow nur für sichtbare Text-Elemente, nicht für Container */
+/* Text Shadow NUR für fertige Nachrichten aktivieren */
 html body.axai-theme-cyberpunk #anything-llm-chat .allm-anything-llm-user-message p,
-html body.axai-theme-cyberpunk #anything-llm-chat .allm-anything-llm-assistant-message p,
+html body.axai-theme-cyberpunk #anything-llm-chat .allm-anything-llm-assistant-message > div > p,
+html body.axai-theme-cyberpunk #anything-llm-chat .allm-anything-llm-assistant-message > p {
+    text-shadow: 0 0 5px rgba(255, 0, 110, 0.5) !important;
+}
+
+/* Text Shadow für UI-Elemente */
 html body.axai-theme-cyberpunk #anything-llm-chat button,
-html body.axai-theme-cyberpunk #anything-llm-chat a,
-html body.axai-theme-cyberpunk #anything-llm-chat h1,
-html body.axai-theme-cyberpunk #anything-llm-chat h2,
-html body.axai-theme-cyberpunk #anything-llm-chat h3 {
+html body.axai-theme-cyberpunk #anything-llm-chat a {
     text-shadow: 0 0 5px rgba(255, 0, 110, 0.5) !important;
 }
 
