@@ -84,6 +84,7 @@ html body[class*="axai-theme-"] .msg-suggestion {
     background-color: var(--axai-button-color) !important;
     color: var(--axai-button-text-color) !important;
     border: 1px solid var(--axai-border-color) !important;
+    opacity: 1 !important;
     transition: all 0.3s ease !important;
 }
 
@@ -430,8 +431,19 @@ html body.axai-theme-linux {
 }
 
 /* Linux Terminal: Monospace Font & Text Shadow */
-html body.axai-theme-linux #anything-llm-chat,
-html body.axai-theme-linux #anything-llm-chat * {
+html body.axai-theme-linux #anything-llm-chat {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+html body.axai-theme-linux #anything-llm-chat p,
+html body.axai-theme-linux #anything-llm-chat span,
+html body.axai-theme-linux #anything-llm-chat div,
+html body.axai-theme-linux #anything-llm-chat a,
+html body.axai-theme-linux #anything-llm-chat button,
+html body.axai-theme-linux #anything-llm-chat li,
+html body.axai-theme-linux #anything-llm-chat h1,
+html body.axai-theme-linux #anything-llm-chat h2,
+html body.axai-theme-linux #anything-llm-chat h3 {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 3px rgba(0, 255, 0, 0.5) !important;
 }
@@ -714,8 +726,19 @@ html body.axai-theme-neon {
 }
 
 /* Neon: Monospace Font & Text Shadow */
-html body.axai-theme-neon #anything-llm-chat,
-html body.axai-theme-neon #anything-llm-chat * {
+html body.axai-theme-neon #anything-llm-chat {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+html body.axai-theme-neon #anything-llm-chat p,
+html body.axai-theme-neon #anything-llm-chat span,
+html body.axai-theme-neon #anything-llm-chat div,
+html body.axai-theme-neon #anything-llm-chat a,
+html body.axai-theme-neon #anything-llm-chat button,
+html body.axai-theme-neon #anything-llm-chat li,
+html body.axai-theme-neon #anything-llm-chat h1,
+html body.axai-theme-neon #anything-llm-chat h2,
+html body.axai-theme-neon #anything-llm-chat h3 {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.7) !important;
 }
@@ -828,8 +851,19 @@ html body.axai-theme-cyberpunk {
 }
 
 /* Cyberpunk: Monospace Font & Text Shadow */
-html body.axai-theme-cyberpunk #anything-llm-chat,
-html body.axai-theme-cyberpunk #anything-llm-chat * {
+html body.axai-theme-cyberpunk #anything-llm-chat {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+html body.axai-theme-cyberpunk #anything-llm-chat p,
+html body.axai-theme-cyberpunk #anything-llm-chat span,
+html body.axai-theme-cyberpunk #anything-llm-chat div,
+html body.axai-theme-cyberpunk #anything-llm-chat a,
+html body.axai-theme-cyberpunk #anything-llm-chat button,
+html body.axai-theme-cyberpunk #anything-llm-chat li,
+html body.axai-theme-cyberpunk #anything-llm-chat h1,
+html body.axai-theme-cyberpunk #anything-llm-chat h2,
+html body.axai-theme-cyberpunk #anything-llm-chat h3 {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
     text-shadow: 0 0 5px rgba(255, 0, 110, 0.5) !important;
 }
@@ -990,6 +1024,11 @@ html body.axai-theme-candy {
     html body[class*="axai-theme-"] * {
         animation: none !important;
         transition: none !important;
+    }
+
+    /* Buttons müssen trotzdem sichtbar bleiben */
+    html body[class*="axai-theme-"] .msg-suggestion {
+        opacity: 1 !important;
     }
 }
 
