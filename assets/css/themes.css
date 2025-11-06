@@ -1026,6 +1026,7 @@ html body.axai-theme-candy {
         transition: none !important;
     }
 
+    
     /* Buttons müssen trotzdem sichtbar bleiben */
     html body[class*="axai-theme-"] .msg-suggestion {
         opacity: 1 !important;
