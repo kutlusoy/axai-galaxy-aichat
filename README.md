@@ -8,7 +8,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
+A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings.
 
 == Description ==
 
