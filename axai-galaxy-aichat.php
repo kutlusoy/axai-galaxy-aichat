@@ -541,30 +541,30 @@ class AxAI_Galaxy_AIChat {
      */
     private function generate_custom_css($theme, $transparency, $blur) {
         $css = '';
-        
+
         // Determine selector based on theme
         if ($theme !== 'default') {
-            $selector = 'body.axai-theme-' . esc_attr($theme);
+            $selector = 'html body.axai-theme-' . esc_attr($theme);
         } else {
-            $selector = ':root';
+            $selector = 'html body';
         }
-        
+
         // Get custom colors from admin
         $button_color = get_option('axai_aichat_button_color');
         $user_bg_color = get_option('axai_aichat_user_bg_color');
         $assistant_bg_color = get_option('axai_aichat_assistant_bg_color');
-        
+
         // Get theme defaults
         $theme_defaults = $this->get_theme_defaults($theme);
-        
+
         // Check if custom colors override theme colors
         $has_custom_colors = false;
-        
-        if (!empty($button_color) || !empty($user_bg_color) || !empty($assistant_bg_color) || 
+
+        if (!empty($button_color) || !empty($user_bg_color) || !empty($assistant_bg_color) ||
             $transparency < 100 || $blur > 0) {
-            
+
             $css .= $selector . ' {' . "\n";
-            
+
             // Button Color Override
             if (!empty($button_color)) {
                 $has_custom_colors = true;
@@ -573,44 +573,52 @@ class AxAI_Galaxy_AIChat {
                 $css .= "    --axai-button-hover-color: {$hover_color} !important;\n";
                 $css .= "    --axai-button-hover-shadow: 0px 4px 14px {$button_color}80 !important;\n";
             }
-            
+
             // User Message Background Override
             if (!empty($user_bg_color)) {
                 $has_custom_colors = true;
                 $css .= "    --axai-user-msg-bg: {$user_bg_color} !important;\n";
             }
-            
+
             // Assistant Message Background Override
             if (!empty($assistant_bg_color)) {
                 $has_custom_colors = true;
                 $css .= "    --axai-bot-msg-bg: {$assistant_bg_color} !important;\n";
             }
-            
+
             // Transparency
             if ($transparency < 100) {
                 $opacity = $transparency / 100;
                 $css .= "    --axai-transparency: {$opacity} !important;\n";
             }
-            
+
             // Blur
             if ($blur > 0) {
                 $css .= "    --axai-blur: {$blur}px !important;\n";
             }
-            
+
             $css .= "}\n\n";
         }
-        
+
+        // Apply blur directly to chat element for better specificity
+        if ($blur > 0) {
+            $css .= $selector . ' #anything-llm-chat {' . "\n";
+            $css .= "    backdrop-filter: blur({$blur}px) !important;\n";
+            $css .= "    -webkit-backdrop-filter: blur({$blur}px) !important;\n";
+            $css .= "}\n\n";
+        }
+
         // Add glow effects for special themes
         if (in_array($theme, array('linux', 'neon', 'cyberpunk')) && !empty($button_color)) {
             $css .= $selector . ' #anything-llm-chat {' . "\n";
             $css .= "    box-shadow: 0px 0px 25px {$button_color} !important;\n";
             $css .= "}\n\n";
-            
+
             $css .= $selector . ' button:hover {' . "\n";
             $css .= "    box-shadow: 0px 0px 25px {$button_color} !important;\n";
             $css .= "}\n";
         }
-        
+
         return $css;
     }
 }
