@@ -94,48 +94,122 @@ class AxAI_Galaxy_AIChat {
      */
     public function register_settings() {
         // Basic Configuration
-        register_setting('axai_aichat_settings', 'axai_aichat_embed_id');
-        register_setting('axai_aichat_settings', 'axai_aichat_server_url');
-        register_setting('axai_aichat_settings', 'axai_aichat_position');
-        register_setting('axai_aichat_settings', 'axai_aichat_chat_icon');
-        register_setting('axai_aichat_settings', 'axai_aichat_open_on_load');
-        register_setting('axai_aichat_settings', 'axai_aichat_show_thoughts');
-        register_setting('axai_aichat_settings', 'axai_aichat_no_sponsor');
-        register_setting('axai_aichat_settings', 'axai_aichat_no_header');
+        register_setting('axai_aichat_settings', 'axai_aichat_embed_id', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_server_url', array(
+            'sanitize_callback' => 'esc_url_raw'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_position', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_chat_icon', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_open_on_load', array(
+            'sanitize_callback' => array($this, 'sanitize_checkbox')
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_show_thoughts', array(
+            'sanitize_callback' => array($this, 'sanitize_checkbox')
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_no_sponsor', array(
+            'sanitize_callback' => array($this, 'sanitize_checkbox')
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_no_header', array(
+            'sanitize_callback' => array($this, 'sanitize_checkbox')
+        ));
 
         // AI Settings
-        register_setting('axai_aichat_settings', 'axai_aichat_prompt');
-        register_setting('axai_aichat_settings', 'axai_aichat_model');
-        register_setting('axai_aichat_settings', 'axai_aichat_temperature');
-        register_setting('axai_aichat_settings', 'axai_aichat_language');
-        register_setting('axai_aichat_settings', 'axai_aichat_default_messages');
+        register_setting('axai_aichat_settings', 'axai_aichat_prompt', array(
+            'sanitize_callback' => 'sanitize_textarea_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_model', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_temperature', array(
+            'sanitize_callback' => array($this, 'sanitize_float')
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_language', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_default_messages', array(
+            'sanitize_callback' => 'sanitize_textarea_field'
+        ));
 
         // Appearance - Branding
-        register_setting('axai_aichat_settings', 'axai_aichat_brand_image_url');
-        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_link');
-        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_text');
-        register_setting('axai_aichat_settings', 'axai_aichat_support_email');
-        register_setting('axai_aichat_settings', 'axai_aichat_reset_chat_text');
+        register_setting('axai_aichat_settings', 'axai_aichat_brand_image_url', array(
+            'sanitize_callback' => 'esc_url_raw'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_link', array(
+            'sanitize_callback' => 'esc_url_raw'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_sponsor_text', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_support_email', array(
+            'sanitize_callback' => 'sanitize_email'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_reset_chat_text', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
 
         // Appearance - Colors
-        register_setting('axai_aichat_settings', 'axai_aichat_button_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_user_bg_color');
-        register_setting('axai_aichat_settings', 'axai_aichat_assistant_bg_color');
+        register_setting('axai_aichat_settings', 'axai_aichat_button_color', array(
+            'sanitize_callback' => 'sanitize_hex_color'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_user_bg_color', array(
+            'sanitize_callback' => 'sanitize_hex_color'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_assistant_bg_color', array(
+            'sanitize_callback' => 'sanitize_hex_color'
+        ));
 
         // Appearance - Text
-        register_setting('axai_aichat_settings', 'axai_aichat_greeting');
-        register_setting('axai_aichat_settings', 'axai_aichat_send_message_text');
-        register_setting('axai_aichat_settings', 'axai_aichat_assistant_name');
-        register_setting('axai_aichat_settings', 'axai_aichat_assistant_icon');
+        register_setting('axai_aichat_settings', 'axai_aichat_greeting', array(
+            'sanitize_callback' => 'sanitize_textarea_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_send_message_text', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_assistant_name', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_assistant_icon', array(
+            'sanitize_callback' => 'esc_url_raw'
+        ));
 
         // Appearance - Dimensions
-        register_setting('axai_aichat_settings', 'axai_aichat_window_height');
-        register_setting('axai_aichat_settings', 'axai_aichat_window_width');
-        
+        register_setting('axai_aichat_settings', 'axai_aichat_window_height', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_window_width', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+
         // Theme
-        register_setting('axai_aichat_settings', 'axai_aichat_theme');
-        register_setting('axai_aichat_settings', 'axai_aichat_transparency');
-        register_setting('axai_aichat_settings', 'axai_aichat_blur');
+        register_setting('axai_aichat_settings', 'axai_aichat_theme', array(
+            'sanitize_callback' => 'sanitize_text_field'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_transparency', array(
+            'sanitize_callback' => 'absint'
+        ));
+        register_setting('axai_aichat_settings', 'axai_aichat_blur', array(
+            'sanitize_callback' => 'absint'
+        ));
+    }
+
+    /**
+     * Sanitize checkbox value
+     */
+    public function sanitize_checkbox($value) {
+        return $value ? 1 : 0;
+    }
+
+    /**
+     * Sanitize float value
+     */
+    public function sanitize_float($value) {
+        return $value !== '' ? floatval($value) : '';
     }
     
     /**
@@ -358,19 +432,19 @@ class AxAI_Galaxy_AIChat {
         // Apply theme class to body
         if ($theme !== 'default') {
             $theme_class = 'axai-theme-' . esc_attr($theme);
-            echo '<script>document.body.classList.add("' . $theme_class . '");</script>' . "\n";
+            echo '<script>document.body.classList.add("' . esc_js($theme_class) . '");</script>' . "\n";
         }
         
         // Generate and output custom CSS
         $custom_css = $this->generate_custom_css($theme, $transparency, $blur);
         if (!empty($custom_css)) {
-            echo '<style id="axai-aichat-custom-inline">' . $custom_css . '</style>' . "\n";
+            echo '<style id="axai-aichat-custom-inline">' . wp_strip_all_tags($custom_css) . '</style>' . "\n";
         }
         
         // Output script tag
         echo '<script';
         foreach ($attributes as $key => $value) {
-            echo ' ' . $key . '="' . $value . '"';
+            echo ' ' . esc_html($key) . '="' . esc_attr($value) . '"';
         }
         echo ' src="' . esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js"></script>' . "\n";
     }
