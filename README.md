@@ -1,5 +1,5 @@
 === AxAI Galaxy AIChat ===
-Contributors: alikutlusoy
+Contributors: kutlusoy
 Tags: ai, chat, chatbot, anythingllm, widget
 Requires at least: 5.0
 Tested up to: 6.8
