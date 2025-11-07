@@ -438,7 +438,7 @@ class AxAI_Galaxy_AIChat {
         // Generate and output custom CSS
         $custom_css = $this->generate_custom_css($theme, $transparency, $blur);
         if (!empty($custom_css)) {
-            echo '<style id="axai-aichat-custom-inline">' . esc_html(wp_strip_all_tags($custom_css)) . '</style>' . "\n";
+            echo '<style id="axai-aichat-custom-inline">' . wp_kses($custom_css, array()) . '</style>' . "\n";
         }
         
         // Output script tag
