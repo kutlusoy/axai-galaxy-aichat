@@ -5,7 +5,6 @@
  * Description: A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
  * Version: 2.2.1
  * Author: Ali Kutlusoy
- * Author URI: https://axai.at
  * License: GPL v2 or later
  * Text Domain: axai-galaxy-aichat
  * 
