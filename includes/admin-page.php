@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 <div class="wrap axai-aichat-admin">
     <h1>
         <?php echo esc_html(get_admin_page_title()); ?>
-        <span class="axai-version">v<?php echo AXAI_AICHAT_VERSION; ?></span>
+        <span class="axai-version">v<?php echo esc_html(AXAI_AICHAT_VERSION); ?></span>
     </h1>
     
     <form method="post" action="options.php">
