@@ -1,4 +1,4 @@
-=== AxAI Galaxy AnythingLLM Chat Widget ===
+=== AxAI Galaxy AIChat ===
 Contributors: alikutlusoy
 Tags: ai, chat, chatbot, anythingllm, widget
 Requires at least: 5.0
@@ -8,7 +8,7 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings.
+A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
 
 == Description ==
 

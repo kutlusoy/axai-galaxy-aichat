@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: AxAI Galaxy AnythingLLM Chat Widget
+ * Plugin Name: AxAI Galaxy AIChat
  * Plugin URI: https://axai.at
- * Description: Integrates AnythingLLM Chat Widget with advanced theme and customization options
+ * Description: A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
  * Version: 2.2.1
  * Author: Ali Kutlusoy
  * Author URI: https://axai.at
