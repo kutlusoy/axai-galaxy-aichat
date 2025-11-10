@@ -72,19 +72,19 @@ if (!defined('ABSPATH')) {
                         <td>
                             <select id="axai_aichat_position" name="axai_aichat_position">
                                 <?php
-                                $positions = array(
+                                $axai_aichat_positions = array(
                                     'bottom-right' => 'Bottom Right',
                                     'bottom-left' => 'Bottom Left',
                                     'top-right' => 'Top Right',
                                     'top-left' => 'Top Left'
                                 );
-                                $current_position = get_option('axai_aichat_position', 'bottom-right');
-                                foreach ($positions as $value => $label) {
+                                $axai_aichat_current_position = get_option('axai_aichat_position', 'bottom-right');
+                                foreach ($axai_aichat_positions as $axai_aichat_value => $axai_aichat_label) {
                                     printf(
                                         '<option value="%s"%s>%s</option>',
-                                        esc_attr($value),
-                                        selected($current_position, $value, false),
-                                        esc_html($label)
+                                        esc_attr($axai_aichat_value),
+                                        selected($axai_aichat_current_position, $axai_aichat_value, false),
+                                        esc_html($axai_aichat_label)
                                     );
                                 }
                                 ?>
@@ -100,7 +100,7 @@ if (!defined('ABSPATH')) {
                         <td>
                             <select id="axai_aichat_chat_icon" name="axai_aichat_chat_icon">
                                 <?php
-                                $icons = array(
+                                $axai_aichat_icons = array(
                                     'plus' => 'Plus',
                                     'chatBubble' => 'Chat Bubble',
                                     'support' => 'Support',
@@ -108,13 +108,13 @@ if (!defined('ABSPATH')) {
                                     'search2' => 'Search 2',
                                     'magic' => 'Magic'
                                 );
-                                $current_icon = get_option('axai_aichat_chat_icon', 'chatBubble');
-                                foreach ($icons as $value => $label) {
+                                $axai_aichat_current_icon = get_option('axai_aichat_chat_icon', 'chatBubble');
+                                foreach ($axai_aichat_icons as $axai_aichat_value => $axai_aichat_label) {
                                     printf(
                                         '<option value="%s"%s>%s</option>',
-                                        esc_attr($value),
-                                        selected($current_icon, $value, false),
-                                        esc_html($label)
+                                        esc_attr($axai_aichat_value),
+                                        selected($axai_aichat_current_icon, $axai_aichat_value, false),
+                                        esc_html($axai_aichat_label)
                                     );
                                 }
                                 ?>
@@ -463,7 +463,7 @@ if (!defined('ABSPATH')) {
                         <td>
                             <select id="axai_aichat_theme" name="axai_aichat_theme" class="theme-selector">
                                 <?php
-                                $themes = array(
+                                $axai_aichat_themes = array(
                                     'default' => 'Default (AnythingLLM Original)',
                                     'linux' => 'Linux Terminal',
                                     'dark' => 'Dark Mode',
@@ -482,13 +482,13 @@ if (!defined('ABSPATH')) {
                                     'retro' => 'Retro',
                                     'candy' => 'Candy'
                                 );
-                                $current_theme = get_option('axai_aichat_theme', 'default');
-                                foreach ($themes as $value => $label) {
+                                $axai_aichat_current_theme = get_option('axai_aichat_theme', 'default');
+                                foreach ($axai_aichat_themes as $axai_aichat_value => $axai_aichat_label) {
                                     printf(
                                         '<option value="%s"%s>%s</option>',
-                                        esc_attr($value),
-                                        selected($current_theme, $value, false),
-                                        esc_html($label)
+                                        esc_attr($axai_aichat_value),
+                                        selected($axai_aichat_current_theme, $axai_aichat_value, false),
+                                        esc_html($axai_aichat_label)
                                     );
                                 }
                                 ?>
@@ -545,16 +545,16 @@ if (!defined('ABSPATH')) {
                 <h3>Embed Code Preview</h3>
                 <div class="code-preview">
                     <?php
-                    $embed_id = get_option('axai_aichat_embed_id', 'YOUR-EMBED-ID');
-                    $server_url = get_option('axai_aichat_server_url', 'https://ai.axai.at:3002');
-                    
-                    $code = '<script' . "\n";
-                    $code .= '  data-embed-id="' . esc_attr($embed_id) . '"' . "\n";
-                    $code .= '  data-base-api-url="' . esc_url($server_url) . '/api/embed"' . "\n";
-                    $code .= '  src="' . esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js"' . "\n";
-                    $code .= '></script>';
+                    $axai_aichat_embed_id = get_option('axai_aichat_embed_id', 'YOUR-EMBED-ID');
+                    $axai_aichat_server_url = get_option('axai_aichat_server_url', 'https://ai.axai.at:3002');
+
+                    $axai_aichat_code = '<script' . "\n";
+                    $axai_aichat_code .= '  data-embed-id="' . esc_attr($axai_aichat_embed_id) . '"' . "\n";
+                    $axai_aichat_code .= '  data-base-api-url="' . esc_url($axai_aichat_server_url) . '/api/embed"' . "\n";
+                    $axai_aichat_code .= '  src="' . esc_url($axai_aichat_server_url) . '/embed/anythingllm-chat-widget.min.js"' . "\n";
+                    $axai_aichat_code .= '></script>';
                     ?>
-                    <pre id="embed-code-preview"><code><?php echo esc_html($code); ?></code></pre>
+                    <pre id="embed-code-preview"><code><?php echo esc_html($axai_aichat_code); ?></code></pre>
                 </div>
                 
                 <div class="axai-warning-box" style="margin-top: 30px;">
