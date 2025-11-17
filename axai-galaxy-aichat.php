@@ -3,11 +3,11 @@
  * Plugin Name: AxAI Galaxy AIChat
  * Plugin URI: https://axai.at
  * Description: A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
- * Version: 2.2.4
+ * Version: 2.2.5
  * Author: Ali Kutlusoy
  * License: GPL v2 or later
  * Text Domain: axai-galaxy-aichat
- * 
+ *
  * File Path: /axai-galaxy-aichat/axai-galaxy-aichat.php
  */
 
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('AXAI_AICHAT_VERSION', '2.2.4');
+define('AXAI_AICHAT_VERSION', '2.2.5');
 define('AXAI_AICHAT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AXAI_AICHAT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -46,9 +46,10 @@ class AxAI_Galaxy_AIChat {
     private function __construct() {
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
-        add_action('wp_footer', array($this, 'render_chat_widget'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
         add_filter('script_loader_tag', array($this, 'add_widget_attributes'), 10, 3);
+        add_filter('body_class', array($this, 'add_theme_body_class'));
     }
     
     /**
@@ -64,6 +65,66 @@ class AxAI_Galaxy_AIChat {
         );
     }
     
+    /**
+     * Add theme class to body
+     */
+    public function add_theme_body_class($classes) {
+        $embed_id = get_option('axai_aichat_embed_id');
+        if (empty($embed_id)) {
+            return $classes;
+        }
+
+        $theme = get_option('axai_aichat_theme', 'default');
+        if ($theme !== 'default') {
+            $classes[] = 'axai-theme-' . esc_attr($theme);
+        }
+
+        return $classes;
+    }
+
+    /**
+     * Enqueue frontend assets
+     */
+    public function enqueue_frontend_assets() {
+        $embed_id = get_option('axai_aichat_embed_id');
+        $server_url = get_option('axai_aichat_server_url', 'https://ai.axai.at:3002');
+
+        if (empty($embed_id)) {
+            return;
+        }
+
+        // Enqueue theme CSS
+        wp_enqueue_style(
+            'axai-aichat-themes',
+            AXAI_AICHAT_PLUGIN_URL . 'assets/css/themes.css',
+            array(),
+            AXAI_AICHAT_VERSION
+        );
+
+        // Generate and add custom CSS
+        $theme = get_option('axai_aichat_theme', 'default');
+        $transparency = get_option('axai_aichat_transparency', '100');
+        $blur = get_option('axai_aichat_blur', '0');
+
+        $custom_css = $this->generate_custom_css($theme, $transparency, $blur);
+        if (!empty($custom_css)) {
+            wp_add_inline_style('axai-aichat-themes', $custom_css);
+        }
+
+        // Build script attributes for the widget
+        $this->widget_attributes = $this->build_widget_attributes($embed_id, $server_url, $theme);
+
+        // Enqueue the AnythingLLM widget script
+        $script_url = esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js';
+        wp_enqueue_script(
+            'anythingllm-chat-widget',
+            $script_url,
+            array(),
+            null,
+            true
+        );
+    }
+
     /**
      * Enqueue admin scripts
      */
@@ -334,37 +395,20 @@ class AxAI_Galaxy_AIChat {
     }
     
     /**
-     * Render chat widget on frontend
+     * Build widget attributes
      */
-    public function render_chat_widget() {
-        $embed_id = get_option('axai_aichat_embed_id');
-        $server_url = get_option('axai_aichat_server_url', 'https://ai.axai.at:3002');
-        
-        if (empty($embed_id)) {
-            return;
-        }
-        
-        // Enqueue theme CSS
-        wp_enqueue_style(
-            'axai-aichat-themes',
-            AXAI_AICHAT_PLUGIN_URL . 'assets/css/themes.css',
-            array(),
-            AXAI_AICHAT_VERSION
-        );
-        
-        // Build script attributes
+    private function build_widget_attributes($embed_id, $server_url, $theme) {
         $attributes = array();
         $attributes['data-embed-id'] = esc_attr($embed_id);
         $attributes['data-base-api-url'] = esc_url($server_url) . '/api/embed';
-        
-        // Get current theme
-        $theme = get_option('axai_aichat_theme', 'default');
+
+        // Get theme defaults
         $theme_defaults = $this->get_theme_defaults($theme);
-        
+
         // Optional parameters
         $this->add_optional_attribute($attributes, 'position', 'data-position');
         $this->add_optional_attribute($attributes, 'chat_icon', 'data-chat-icon');
-        
+
         // Button color with theme default
         $button_color = get_option('axai_aichat_button_color');
         if (empty($button_color)) {
@@ -373,14 +417,14 @@ class AxAI_Galaxy_AIChat {
         if (!empty($button_color)) {
             $attributes['data-button-color'] = esc_attr($button_color);
         }
-        
+
         $this->add_optional_attribute($attributes, 'window_height', 'data-window-height');
         $this->add_optional_attribute($attributes, 'window_width', 'data-window-width');
         $this->add_optional_attribute($attributes, 'greeting', 'data-greeting');
         $this->add_optional_attribute($attributes, 'send_message_text', 'data-send-message-text');
         $this->add_optional_attribute($attributes, 'assistant_name', 'data-assistant-name');
         $this->add_optional_attribute($attributes, 'assistant_icon', 'data-assistant-icon');
-        
+
         // User background color with theme default
         $user_bg_color = get_option('axai_aichat_user_bg_color');
         if (empty($user_bg_color)) {
@@ -389,7 +433,7 @@ class AxAI_Galaxy_AIChat {
         if (!empty($user_bg_color)) {
             $attributes['data-user-bg-color'] = esc_attr($user_bg_color);
         }
-        
+
         // Assistant background color with theme default
         $assistant_bg_color = get_option('axai_aichat_assistant_bg_color');
         if (empty($assistant_bg_color)) {
@@ -398,14 +442,14 @@ class AxAI_Galaxy_AIChat {
         if (!empty($assistant_bg_color)) {
             $attributes['data-assistant-bg-color'] = esc_attr($assistant_bg_color);
         }
-        
+
         // AI parameters
         $this->add_optional_attribute($attributes, 'prompt', 'data-prompt');
         $this->add_optional_attribute($attributes, 'model', 'data-model');
         $this->add_optional_attribute($attributes, 'temperature', 'data-temperature');
         $this->add_optional_attribute($attributes, 'language', 'data-language');
         $this->add_optional_attribute($attributes, 'default_messages', 'data-default-messages');
-        
+
         // Branding
         $this->add_optional_attribute($attributes, 'brand_image_url', 'data-brand-image-url');
         $this->add_optional_attribute($attributes, 'sponsor_link', 'data-sponsor-link');
@@ -426,41 +470,8 @@ class AxAI_Galaxy_AIChat {
         if (get_option('axai_aichat_no_header')) {
             $attributes['data-no-header'] = 'true';
         }
-        
-        // Theme and customizations
-        $transparency = get_option('axai_aichat_transparency', '100');
-        $blur = get_option('axai_aichat_blur', '0');
-        
-        // Apply theme class to body
-        if ($theme !== 'default') {
-            $theme_class = 'axai-theme-' . esc_attr($theme);
-            // Register a dummy script handle for inline theme JS
-            wp_register_script('axai-aichat-theme-js', false, array(), AXAI_AICHAT_VERSION, true);
-            wp_enqueue_script('axai-aichat-theme-js');
-            wp_add_inline_script(
-                'axai-aichat-theme-js',
-                'document.body.classList.add("' . esc_js($theme_class) . '");'
-            );
-        }
 
-        // Generate and output custom CSS
-        $custom_css = $this->generate_custom_css($theme, $transparency, $blur);
-        if (!empty($custom_css)) {
-            wp_add_inline_style('axai-aichat-themes', $custom_css);
-        }
-
-        // Store attributes for filter
-        $this->widget_attributes = $attributes;
-
-        // Enqueue the AnythingLLM widget script
-        $script_url = esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js';
-        wp_enqueue_script(
-            'anythingllm-chat-widget',
-            $script_url,
-            array(),
-            null,
-            true
-        );
+        return $attributes;
     }
     
     /**
