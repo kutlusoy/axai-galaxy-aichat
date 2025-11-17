@@ -3,7 +3,7 @@
  * Plugin Name: AxAI Galaxy AIChat
  * Plugin URI: https://axai.at
  * Description: A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
- * Version: 2.2.3
+ * Version: 2.2.4
  * Author: Ali Kutlusoy
  * License: GPL v2 or later
  * Text Domain: axai-galaxy-aichat
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('AXAI_AICHAT_VERSION', '2.2.1');
+define('AXAI_AICHAT_VERSION', '2.2.4');
 define('AXAI_AICHAT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AXAI_AICHAT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -41,11 +41,14 @@ class AxAI_Galaxy_AIChat {
     /**
      * Constructor
      */
+    private $widget_attributes = array();
+
     private function __construct() {
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
         add_action('wp_footer', array($this, 'render_chat_widget'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
+        add_filter('script_loader_tag', array($this, 'add_widget_attributes'), 10, 3);
     }
     
     /**
@@ -445,15 +448,42 @@ class AxAI_Galaxy_AIChat {
         if (!empty($custom_css)) {
             wp_add_inline_style('axai-aichat-themes', $custom_css);
         }
-        
-        // Output script tag
-        echo '<script';
-        foreach ($attributes as $key => $value) {
-            echo ' ' . esc_html($key) . '="' . esc_attr($value) . '"';
-        }
-        echo ' src="' . esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js"></script>' . "\n";
+
+        // Store attributes for filter
+        $this->widget_attributes = $attributes;
+
+        // Enqueue the AnythingLLM widget script
+        $script_url = esc_url($server_url) . '/embed/anythingllm-chat-widget.min.js';
+        wp_enqueue_script(
+            'anythingllm-chat-widget',
+            $script_url,
+            array(),
+            null,
+            true
+        );
     }
     
+    /**
+     * Add widget attributes to script tag
+     */
+    public function add_widget_attributes($tag, $handle, $src) {
+        // Only modify our widget script
+        if ($handle !== 'anythingllm-chat-widget') {
+            return $tag;
+        }
+
+        // Add all data attributes
+        $attributes_str = '';
+        foreach ($this->widget_attributes as $key => $value) {
+            $attributes_str .= ' ' . esc_html($key) . '="' . esc_attr($value) . '"';
+        }
+
+        // Replace the script tag to include our attributes
+        $tag = '<script' . $attributes_str . ' src="' . esc_url($src) . '"></script>' . "\n";
+
+        return $tag;
+    }
+
     /**
      * Add optional attribute
      */

@@ -3,7 +3,7 @@ Contributors: kutlusoy
 Tags: ai, chat, chatbot, anythingllm, widget
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -100,6 +100,11 @@ For support and documentation, visit:
 - AnythingLLM server access
 
 == Changelog ==
+
+= 2.2.4 =
+* Fixed wp_enqueue usage for external AnythingLLM widget script
+* Updated Contributors field to match WordPress.org username
+* Properly implemented script_loader_tag filter for data attributes
 
 = 2.2.2 =
 * Fixed wp_enqueue usage for inline scripts and styles
