@@ -431,13 +431,19 @@ class AxAI_Galaxy_AIChat {
         // Apply theme class to body
         if ($theme !== 'default') {
             $theme_class = 'axai-theme-' . esc_attr($theme);
-            echo '<script>document.body.classList.add("' . esc_js($theme_class) . '");</script>' . "\n";
+            // Register a dummy script handle for inline theme JS
+            wp_register_script('axai-aichat-theme-js', false, array(), AXAI_AICHAT_VERSION, true);
+            wp_enqueue_script('axai-aichat-theme-js');
+            wp_add_inline_script(
+                'axai-aichat-theme-js',
+                'document.body.classList.add("' . esc_js($theme_class) . '");'
+            );
         }
-        
+
         // Generate and output custom CSS
         $custom_css = $this->generate_custom_css($theme, $transparency, $blur);
         if (!empty($custom_css)) {
-            echo '<style id="axai-aichat-custom-inline">' . wp_kses($custom_css, array()) . '</style>' . "\n";
+            wp_add_inline_style('axai-aichat-themes', $custom_css);
         }
         
         // Output script tag
