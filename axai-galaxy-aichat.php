@@ -3,7 +3,7 @@
  * Plugin Name: AxAI Galaxy AIChat
  * Plugin URI: https://axai.at
  * Description: A powerful WordPress plugin that integrates AnythingLLM Chat Widget with advanced theme customization options and extensive configuration settings. You can use your own AnythingLLM Server (Docker). You can test the functioning version at https://axai.at
- * Version: 2.2.5
+ * Version: 2.2.6
  * Author: Ali Kutlusoy
  * License: GPL v2 or later
  * Text Domain: axai-galaxy-aichat
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('AXAI_AICHAT_VERSION', '2.2.5');
+define('AXAI_AICHAT_VERSION', '2.2.6');
 define('AXAI_AICHAT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('AXAI_AICHAT_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -615,32 +615,32 @@ class AxAI_Galaxy_AIChat {
             if (!empty($button_color)) {
                 $has_custom_colors = true;
                 $hover_color = $this->get_hover_color($button_color);
-                $css .= "    --axai-button-color: {$button_color} !important;\n";
-                $css .= "    --axai-button-hover-color: {$hover_color} !important;\n";
-                $css .= "    --axai-button-hover-shadow: 0px 4px 14px {$button_color}80 !important;\n";
+                $css .= "    --axai-button-color: " . esc_attr($button_color) . " !important;\n";
+                $css .= "    --axai-button-hover-color: " . esc_attr($hover_color) . " !important;\n";
+                $css .= "    --axai-button-hover-shadow: 0px 4px 14px " . esc_attr($button_color) . "80 !important;\n";
             }
 
             // User Message Background Override
             if (!empty($user_bg_color)) {
                 $has_custom_colors = true;
-                $css .= "    --axai-user-msg-bg: {$user_bg_color} !important;\n";
+                $css .= "    --axai-user-msg-bg: " . esc_attr($user_bg_color) . " !important;\n";
             }
 
             // Assistant Message Background Override
             if (!empty($assistant_bg_color)) {
                 $has_custom_colors = true;
-                $css .= "    --axai-bot-msg-bg: {$assistant_bg_color} !important;\n";
+                $css .= "    --axai-bot-msg-bg: " . esc_attr($assistant_bg_color) . " !important;\n";
             }
 
             // Transparency
             if ($transparency < 100) {
                 $opacity = $transparency / 100;
-                $css .= "    --axai-transparency: {$opacity} !important;\n";
+                $css .= "    --axai-transparency: " . esc_attr($opacity) . " !important;\n";
             }
 
             // Blur
             if ($blur > 0) {
-                $css .= "    --axai-blur: {$blur}px !important;\n";
+                $css .= "    --axai-blur: " . esc_attr($blur) . "px !important;\n";
             }
 
             $css .= "}\n\n";
@@ -649,19 +649,19 @@ class AxAI_Galaxy_AIChat {
         // Apply blur directly to chat element for better specificity
         if ($blur > 0) {
             $css .= $selector . ' #anything-llm-chat {' . "\n";
-            $css .= "    backdrop-filter: blur({$blur}px) !important;\n";
-            $css .= "    -webkit-backdrop-filter: blur({$blur}px) !important;\n";
+            $css .= "    backdrop-filter: blur(" . esc_attr($blur) . "px) !important;\n";
+            $css .= "    -webkit-backdrop-filter: blur(" . esc_attr($blur) . "px) !important;\n";
             $css .= "}\n\n";
         }
 
         // Add glow effects for special themes
         if (in_array($theme, array('linux', 'neon', 'cyberpunk')) && !empty($button_color)) {
             $css .= $selector . ' #anything-llm-chat {' . "\n";
-            $css .= "    box-shadow: 0px 0px 25px {$button_color} !important;\n";
+            $css .= "    box-shadow: 0px 0px 25px " . esc_attr($button_color) . " !important;\n";
             $css .= "}\n\n";
 
             $css .= $selector . ' button:hover {' . "\n";
-            $css .= "    box-shadow: 0px 0px 25px {$button_color} !important;\n";
+            $css .= "    box-shadow: 0px 0px 25px " . esc_attr($button_color) . " !important;\n";
             $css .= "}\n";
         }
 
