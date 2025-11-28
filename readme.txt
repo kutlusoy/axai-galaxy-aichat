@@ -3,7 +3,7 @@ Contributors: kutlusoy
 Tags: ai, chat, chatbot, anythingllm, widget
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.2.5
+Stable tag: 2.2.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -100,6 +100,12 @@ For support and documentation, visit:
 - AnythingLLM server access
 
 == Changelog ==
+
+= 2.2.6 =
+* Security: Fixed variable escaping in CSS generation (generate_custom_css method)
+* Security: All color values, opacity, and blur parameters now properly escaped with esc_attr()
+* Improved output escaping to prevent potential XSS vulnerabilities
+* Compliance with WordPress.org plugin review security standards
 
 = 2.2.5 =
 * Fixed script and style enqueuing timing by moving to wp_enqueue_scripts hook
