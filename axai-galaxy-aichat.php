@@ -120,7 +120,7 @@ class AxAI_Galaxy_AIChat {
             'anythingllm-chat-widget',
             $script_url,
             array(),
-            null,
+            AXAI_AICHAT_VERSION,
             true
         );
     }

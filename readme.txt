@@ -104,6 +104,7 @@ For support and documentation, visit:
 = 2.2.6 =
 * Security: Fixed variable escaping in CSS generation (generate_custom_css method)
 * Security: All color values, opacity, and blur parameters now properly escaped with esc_attr()
+* Fixed: Added version parameter to wp_enqueue_script() for proper browser cache handling
 * Improved output escaping to prevent potential XSS vulnerabilities
 * Compliance with WordPress.org plugin review security standards
 
